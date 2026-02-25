@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDC255 Final Group Project</title>
+
+    <!-- files are in the SAME folder as this index.html -->
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+
+  <body>
+    <main class="page">
+      <header class="header">
+        <h1>SDC255 Final Group Project</h1>
+        <p class="sub">
+          Console-based C application (menu + option routing + calculations + file I/O).
+          This page is a <span class="chip">viewer + test harness</span> for your repo files.
+        </p>
+      </header>
+
+      <section class="grid">
+        <aside class="panel">
+          <div class="panel__title">
+            <h2>Project Files</h2>
+            <button id="btnReload" class="btn" type="button">Reload</button>
+          </div>
+
+          <div class="hint">
+            If a file says <b>Missing</b>, the path is wrong or the file isn’t where we think it is.
+          </div>
+
+          <ul id="fileList" class="filelist"></ul>
+
+          <div class="mini">
+            <div class="mini__row">
+              <span>Status:</span> <span id="statusText" class="status">Loading…</span>
+            </div>
+            <div class="mini__row">
+              <span>Tip:</span> Use <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> to hard refresh.
+            </div>
+          </div>
+        </aside>
+
+        <section class="terminal panel">
+          <div class="terminal__bar">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+            <div class="terminal__title">
+              <span id="openFileName">Select a file to view</span>
+            </div>
+          </div>
+
+          <pre class="terminal__screen"><code id="codeViewer">Waiting for file selection…</code></pre>
+
+          <div class="terminal__footer">
+            <div class="footer__left">
+              <span class="chip">Repo Viewer</span>
+              <span class="chip">Path Checker</span>
+            </div>
+            <div class="footer__right">
+              <button id="btnCopy" class="btn btn--ghost" type="button">Copy</button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- NEW: Terminal Test Harness -->
+      <section class="panel harness">
+        <div class="panel__title">
+          <h2>Test Terminal</h2>
+          <button id="btnClearTerminal" class="btn btn--ghost" type="button">Clear</button>
+        </div>
+
+        <div class="harness__body">
+          <div class="harness__row">
+            <label class="harness__label" for="numA">A</label>
+            <input id="numA" class="harness__input" type="number" step="1" placeholder="e.g. 4" />
+
+            <label class="harness__label" for="numB">B</label>
+            <input id="numB" class="harness__input" type="number" step="1" placeholder="e.g. 2" />
+          </div>
+
+          <div class="harness__buttons">
+            <button id="btnCalc1" class="btn" type="button">Run Calc 1 (Add)</button>
+            <button id="btnCalc2" class="btn" type="button">Run Calc 2 (Multiply)</button>
+            <button id="btnMenuSim" class="btn btn--ghost" type="button">Simulate Menu Flow</button>
+          </div>
+
+          <pre class="harness__terminal"><code id="terminalOut">Terminal ready…</code></pre>
+
+          <div class="hint">
+            Note: Browsers can’t execute C directly. This terminal runs a JS test harness that mirrors your C
+            calculations so you can verify behavior on GitHub Pages.
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>
+          If this loads locally but not on GitHub Pages, it’s almost always path/case sensitivity.
+          GitHub Pages is petty like that — like a professor who docks points for “teh”.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
