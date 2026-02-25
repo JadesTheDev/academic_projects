@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/*
+   New Perspectives on HTML5 and CSS3, 8th Edition
+   Tutorial 8
+   Coding Challenge 3
+
+   Filename: anim.css
+*/
+
+/* Cube container */
+div#cube {
+   position: absolute;
+   top: 300px;
+   left: 350px;
+   width: 300px;
+   height: 300px;
+
+   perspective: 2000px;
+   transform-style: preserve-3d;
+   transform: rotateX(24deg) rotateY(40deg);
+
+   animation: spinCube 6s linear infinite;
+}
+
+/* Cube faces */
+div#cube img {
+   display: block;
+   width: 300px;
+   height: 300px;
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+
+/* Face positioning */
+#faceFront  { transform: translateZ(150px); }
+#faceBack   { transform: rotateY(180deg) translateZ(150px); }
+#faceRight  { transform: rotateY(90deg)  translateZ(150px); }
+#faceLeft   { transform: rotateY(-90deg) translateZ(150px); }
+#faceTop    { transform: rotateX(90deg)  translateZ(150px); }
+#faceBottom { transform: rotateX(-90deg) translateZ(150px); }
+
+/* Cube rotation animation */
+@keyframes spinCube {
+   from { transform: rotateX(24deg) rotateY(0deg); }
+   to   { transform: rotateX(24deg) rotateY(360deg); }
+}
