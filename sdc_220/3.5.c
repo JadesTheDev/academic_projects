@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 /********************************************************************
 * Name: Jade Powell
-* Date: March 18, 2026
+* Date: March 17, 2026
 * Assignment: SDC220 Week 3 PA – Calculations & Unique Numbers
 *
 * Demonstrates arrays, lists, and unique value calculations.
