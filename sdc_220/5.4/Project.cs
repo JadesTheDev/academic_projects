@@ -18,9 +18,9 @@ public class Program
         Console.WriteLine("Jade Powell - Week 5 PA - Inheritance & Overriding\n");
 
         Animal a1 = new Animal("Roo", 2);
-        Cat c1 = new Cat("Fluffy", 4, "meow");
+        Cat c1 = new Cat("CoffeeBean", 4, "meow, I want to play! NOW!");
         Animal a2 = new Animal("Flipper", 0);
-        Cat c2 = new Cat("Garfield", 4, "I'm HUNGRY");
+        Cat c2 = new Cat("Mocha", 4, "I'm HUNGRY and I will dig through the trash if I have to.");
 
         a1.PrintAnimal();
         c1.PrintAnimal();
