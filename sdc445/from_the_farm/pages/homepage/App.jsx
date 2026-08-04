@@ -23,7 +23,9 @@ button functionality, and renders the homepage.
 import { useState } from "react";
 import "./App.css";
 
-import Header from "./Header";
+import Header from "../../src/components/Header";
+import Menu from "../../src/components/menu";
+
 import Searchbar from "./Searchbar";
 import NewsCard from "./NewsCard";
 import ProductCard from "./ProductCard";
