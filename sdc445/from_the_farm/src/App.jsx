@@ -1,3 +1,25 @@
+/*
+=========================================================
+SDC445 - Interface Design
+From the Farm
+
+Authors:
+- Jade Powell
+- Holly Hebert
+- Patrick Gonzalez
+
+Description:
+Main application component for the From the Farm project.
+This component manages the application's state,
+button functionality, and renders the homepage.
+
+=========================================================
+*/
+
+// ==========================
+// Imports
+// ==========================
+
 import { useState } from "react";
 import "./App.css";
 
@@ -6,35 +28,60 @@ import Searchbar from "./Searchbar";
 import NewsCard from "./NewsCard";
 import ProductCard from "./ProductCard";
 
+// ==========================
+// Main Application Component
+// ==========================
+
 function App() {
+
+  // ==========================
+  // React State
+  // ==========================
+
   const [searchText, setSearchText] = useState("");
   const [statusMessage, setStatusMessage] = useState(
     "Welcome to From the Farm"
   );
 
+  // ==========================
+  // Button Functions
+  // ==========================
+
   function handleBackClick() {
-    setStatusMessage("Back button clicked");
+    setStatusMessage(
+      "Back selected: returning to the previous page."
+    );
   }
 
   function handleHomeClick() {
-    setStatusMessage("You are already on the homepage");
+    setStatusMessage(
+      "Home selected: you are already on the homepage."
+    );
   }
 
   function handleSearch() {
     const cleanedSearchText = searchText.trim();
 
     if (cleanedSearchText === "") {
-      setStatusMessage("Please enter something to search for");
+      setStatusMessage(
+        "Search selected: please enter a search term."
+      );
       return;
     }
 
-    setStatusMessage(`You searched for: ${cleanedSearchText}`);
+    setStatusMessage(
+      `Search results for: ${cleanedSearchText}`
+    );
   }
+
+  // ==========================
+  // Placeholder Data
+  // ==========================
 
   const newsItems = [
     {
       id: 1,
-      title: "Weekend Farmers’ Market",
+      title: "Weekend Farmers' Market",
       description:
         "Local farmers will gather downtown this Saturday with produce, baked goods, and handmade products."
     },
@@ -65,25 +112,37 @@ function App() {
     }
   ];
 
+  // ==========================
+  // Render Homepage
+  // ==========================
+
   return (
     <div className="app">
+
       <Header
         onBackClick={handleBackClick}
         onHomeClick={handleHomeClick}
       />
 
       <main className="main-content">
+
         <Searchbar
           searchText={searchText}
           onSearchTextChange={setSearchText}
           onSearch={handleSearch}
         />
 
-        <p className="status-message" aria-live="polite">
+        <p
+          className="status-message"
+          aria-live="polite"
+        >
           {statusMessage}
         </p>
 
+        {/* Hero Section */}
+
         <section className="hero-section">
+
           <div className="hero-graphic">
             <p>Farm Image Placeholder</p>
           </div>
@@ -92,16 +151,21 @@ function App() {
             <h2>Discover Food Grown Near You</h2>
 
             <p>
-              Find nearby farms, farmers’ markets, seasonal products,
-              and community events.
+              Find nearby farms, farmers' markets,
+              seasonal products, and community events.
             </p>
           </div>
+
         </section>
 
+        {/* Recent News Section */}
+
         <section className="content-section">
+
           <h2>Recent News</h2>
 
           <div className="card-grid news-grid">
+
             {newsItems.map((newsItem) => (
               <NewsCard
                 key={newsItem.id}
@@ -109,13 +173,19 @@ function App() {
                 description={newsItem.description}
               />
             ))}
+
           </div>
+
         </section>
 
+        {/* Featured Products Section */}
+
         <section className="content-section">
+
           <h2>For You</h2>
 
           <div className="card-grid product-grid">
+
             {products.map((product) => (
               <ProductCard
                 key={product.id}
@@ -123,15 +193,25 @@ function App() {
                 price={product.price}
               />
             ))}
+
           </div>
+
         </section>
+
       </main>
 
+      {/* Footer */}
+
       <footer className="footer">
-        <p>From the Farm — Week 1 React Project</p>
+        <p>From the Farm — React Group Project</p>
       </footer>
+
     </div>
   );
 }
+
+// ==========================
+// Export Component
+// ==========================
 
 export default App;
