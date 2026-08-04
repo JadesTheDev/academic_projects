@@ -11,7 +11,7 @@ Authors:
 Description:
 Main application component for the From the Farm project.
 This component manages the application's state,
-button functionality, and renders the homepage.
+button functionality, menu display, and homepage content.
 
 =========================================================
 */
@@ -34,7 +34,6 @@ import ProductCard from "./components/ProductCard";
 // ==========================
 
 function App() {
-
   // ==========================
   // React State
   // ==========================
@@ -67,6 +66,7 @@ function App() {
       setStatusMessage(
         "Search selected: please enter a search term."
       );
+
       return;
     }
 
@@ -119,13 +119,21 @@ function App() {
 
   return (
     <div className="app">
+      {/* Header */}
 
       <Header
         onBackClick={handleBackClick}
         onHomeClick={handleHomeClick}
       />
 
+      {/* Main Navigation Menu */}
+
+      <Menu />
+
+      {/* Main Page Content */}
+
       <main className="main-content">
+        {/* Search Section */}
 
         <Searchbar
           searchText={searchText}
@@ -143,7 +151,6 @@ function App() {
         {/* Hero Section */}
 
         <section className="hero-section">
-
           <div className="hero-graphic">
             <p>Farm Image Placeholder</p>
           </div>
@@ -152,21 +159,18 @@ function App() {
             <h2>Discover Food Grown Near You</h2>
 
             <p>
-              Find nearby farms, farmers' markets,
+              Find nearby farms, farmers&apos; markets,
               seasonal products, and community events.
             </p>
           </div>
-
         </section>
 
         {/* Recent News Section */}
 
         <section className="content-section">
-
           <h2>Recent News</h2>
 
           <div className="card-grid news-grid">
-
             {newsItems.map((newsItem) => (
               <NewsCard
                 key={newsItem.id}
@@ -174,19 +178,15 @@ function App() {
                 description={newsItem.description}
               />
             ))}
-
           </div>
-
         </section>
 
         {/* Featured Products Section */}
 
         <section className="content-section">
-
           <h2>For You</h2>
 
           <div className="card-grid product-grid">
-
             {products.map((product) => (
               <ProductCard
                 key={product.id}
@@ -194,11 +194,8 @@ function App() {
                 price={product.price}
               />
             ))}
-
           </div>
-
         </section>
-
       </main>
 
       {/* Footer */}
@@ -206,7 +203,6 @@ function App() {
       <footer className="footer">
         <p>From the Farm — React Group Project</p>
       </footer>
-
     </div>
   );
 }
