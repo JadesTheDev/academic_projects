@@ -12,8 +12,7 @@ function Menu() {
         <li>🗺 Map</li>
         <li>📅 Seasonal Calendar</li>
         <li>📰 News</li>
-        <li>❤️ Favorites</li>
-        <li>🛒 Cart</li>
+        <li>👤 Profile</li>
       </ul>
     </div>
   );
