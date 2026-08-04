@@ -1,7 +1,11 @@
 import { PiArrowElbowUpLeftBold } from "react-icons/pi";
 import { TfiHome } from "react-icons/tfi";
 
-function Header({ onBackClick, onHomeClick }) {
+function Header({
+  onBackClick,
+  onHomeClick,
+  onMenuClick
+}) {
   return (
     <header className="header">
       <div className="header-navigation">
