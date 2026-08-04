@@ -1,0 +1,23 @@
+.menu{
+    width:250px;
+    height:100vh;
+
+    background:#496B3D;
+    color:white;
+
+    padding:20px;
+}
+
+.menu h2{
+    margin-bottom:25px;
+}
+
+.menu ul{
+    list-style:none;
+    padding:0;
+}
+
+.menu li{
+    padding:12px 0;
+    cursor:pointer;
+}
