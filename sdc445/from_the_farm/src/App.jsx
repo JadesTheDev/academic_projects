@@ -23,12 +23,11 @@ button functionality, and renders the homepage.
 import { useState } from "react";
 import "./App.css";
 
-import Header from "../../src/components/Header";
-import Menu from "../../src/components/menu";
-
-import Searchbar from "./Searchbar";
-import NewsCard from "./NewsCard";
-import ProductCard from "./ProductCard";
+import Header from "./components/Header";
+import Menu from "./components/Menu";
+import Searchbar from "./components/Searchbar";
+import NewsCard from "./components/NewsCard";
+import ProductCard from "./components/ProductCard";
 
 // ==========================
 // Main Application Component
