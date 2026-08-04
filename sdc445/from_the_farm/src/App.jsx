@@ -11,7 +11,7 @@ Authors:
 Description:
 Main application component for the From the Farm project.
 This component manages the application's state,
-button functionality, menu display, and homepage content.
+button functionality, menu visibility, and homepage content.
 
 =========================================================
 */
@@ -39,9 +39,12 @@ function App() {
   // ==========================
 
   const [searchText, setSearchText] = useState("");
+
   const [statusMessage, setStatusMessage] = useState(
     "Welcome to From the Farm"
   );
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // ==========================
   // Button Functions
@@ -57,6 +60,10 @@ function App() {
     setStatusMessage(
       "Home selected: you are already on the homepage."
     );
+  }
+
+  function handleMenuClick() {
+    setIsMenuOpen((currentMenuState) => !currentMenuState);
   }
 
   function handleSearch() {
@@ -124,11 +131,12 @@ function App() {
       <Header
         onBackClick={handleBackClick}
         onHomeClick={handleHomeClick}
+        onMenuClick={handleMenuClick}
       />
 
-      {/* Main Navigation Menu */}
+      {/* Navigation Menu */}
 
-      <Menu />
+      {isMenuOpen && <Menu />}
 
       {/* Main Page Content */}
 
