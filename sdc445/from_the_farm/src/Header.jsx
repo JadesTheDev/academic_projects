@@ -1,3 +1,6 @@
+import { PiArrowElbowUpLeftBold } from "react-icons/pi";
+import { TfiHome } from "react-icons/tfi";
+
 function Header({ onBackClick, onHomeClick }) {
   return (
     <header className="header">
@@ -6,16 +9,18 @@ function Header({ onBackClick, onHomeClick }) {
           type="button"
           className="header-button"
           onClick={onBackClick}
+          aria-label="Back"
         >
-          Back
+          <PiArrowElbowUpLeftBold />
         </button>
 
         <button
           type="button"
           className="header-button"
           onClick={onHomeClick}
+          aria-label="Home"
         >
-          Home
+          <TfiHome />
         </button>
       </div>
 

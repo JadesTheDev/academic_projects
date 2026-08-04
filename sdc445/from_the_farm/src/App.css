@@ -8,7 +8,7 @@
   align-items: center;
   gap: 20px;
   padding: 16px 24px;
-  background-color: #ffffff;
+  background-color: rgba(54, 100, 24, 0.801);
   border-bottom: 1px solid #cccccc;
 }
 
@@ -32,6 +32,13 @@
   color: #222222;
 }
 
+.header-navigation .header-button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 24px;
+}
+
 .header-button:hover,
 .search-button:hover {
   background-color: #dddddd;
@@ -41,6 +48,7 @@
   margin: 0;
   font-size: 1.75rem;
   text-align: center;
+  color: white;
 }
 
 .header-placeholder {
