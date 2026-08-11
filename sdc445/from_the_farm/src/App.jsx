@@ -28,6 +28,7 @@ import Menu from "./components/Menu";
 import Searchbar from "./components/Searchbar";
 import NewsCard from "./components/NewsCard";
 import ProductCard from "./components/ProductCard";
+import ProductCatalog from "./components/ProductCatalog";
 
 // ==========================
 // Main Application Component
@@ -46,24 +47,56 @@ function App() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState("home");
+
   // ==========================
   // Button Functions
   // ==========================
 
   function handleBackClick() {
+    if (currentPage === "catalog") {
+      setCurrentPage("home");
+      setStatusMessage("Back selected: returning to the homepage.");
+      return;
+    }
+
     setStatusMessage(
       "Back selected: returning to the previous page."
     );
   }
 
   function handleHomeClick() {
-    setStatusMessage(
-      "Home selected: you are already on the homepage."
-    );
+    if (currentPage === "home") {
+      setStatusMessage(
+        "Home selected: you are already on the homepage."
+      );
+      return;
+    }
+
+    setCurrentPage("home");
+    setStatusMessage("Home selected: returning to the homepage.");
   }
 
   function handleMenuClick() {
     setIsMenuOpen((currentMenuState) => !currentMenuState);
+  }
+
+  function handleNavigate(page) {
+    setIsMenuOpen(false);
+
+    if (page === "products") {
+      setCurrentPage("catalog");
+      setStatusMessage("Viewing the product catalog.");
+      return;
+    }
+
+    if (page === "home") {
+      setCurrentPage("home");
+      setStatusMessage("Home selected: you are already on the homepage.");
+      return;
+    }
+
+    setStatusMessage(`The ${page} page is not built yet.`);
   }
 
   function handleSearch() {
@@ -136,7 +169,7 @@ function App() {
 
       {/* Navigation Menu */}
 
-      {isMenuOpen && <Menu />}
+      {isMenuOpen && <Menu onNavigate={handleNavigate} />}
 
       {/* Main Page Content */}
 
@@ -156,54 +189,62 @@ function App() {
           {statusMessage}
         </p>
 
-        {/* Hero Section */}
+        {/* Page Content */}
 
-        <section className="hero-section">
-          <div className="hero-graphic">
-            <p>Farm Image Placeholder</p>
-          </div>
+        {currentPage === "home" ? (
+          <>
+            {/* Hero Section */}
 
-          <div className="hero-text">
-            <h2>Discover Food Grown Near You</h2>
+            <section className="hero-section">
+              <div className="hero-graphic">
+                <p>Farm Image Placeholder</p>
+              </div>
 
-            <p>
-              Find nearby farms, farmers&apos; markets,
-              seasonal products, and community events.
-            </p>
-          </div>
-        </section>
+              <div className="hero-text">
+                <h2>Discover Food Grown Near You</h2>
 
-        {/* Recent News Section */}
+                <p>
+                  Find nearby farms, farmers&apos; markets,
+                  seasonal products, and community events.
+                </p>
+              </div>
+            </section>
 
-        <section className="content-section">
-          <h2>Recent News</h2>
+            {/* Recent News Section */}
 
-          <div className="card-grid news-grid">
-            {newsItems.map((newsItem) => (
-              <NewsCard
-                key={newsItem.id}
-                title={newsItem.title}
-                description={newsItem.description}
-              />
-            ))}
-          </div>
-        </section>
+            <section className="content-section">
+              <h2>Recent News</h2>
 
-        {/* Featured Products Section */}
+              <div className="card-grid news-grid">
+                {newsItems.map((newsItem) => (
+                  <NewsCard
+                    key={newsItem.id}
+                    title={newsItem.title}
+                    description={newsItem.description}
+                  />
+                ))}
+              </div>
+            </section>
 
-        <section className="content-section">
-          <h2>For You</h2>
+            {/* Featured Products Section */}
 
-          <div className="card-grid product-grid">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                name={product.name}
-                price={product.price}
-              />
-            ))}
-          </div>
-        </section>
+            <section className="content-section">
+              <h2>For You</h2>
+
+              <div className="card-grid product-grid">
+                {products.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    name={product.name}
+                    price={product.price}
+                  />
+                ))}
+              </div>
+            </section>
+          </>
+        ) : (
+          <ProductCatalog />
+        )}
       </main>
 
       {/* Footer */}

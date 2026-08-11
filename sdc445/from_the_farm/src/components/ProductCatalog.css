@@ -1,0 +1,81 @@
+/*
+=========================================================
+SDC445 - Interface Design
+From the Farm
+
+Description:
+Styles for the Product Catalog page. Uses a cream
+background to match the "Product Catalog" screen from the
+Visual Foundation design.
+
+=========================================================
+*/
+
+.catalog-page {
+  padding: 20px;
+  background-color: #f2eddb;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+
+.catalog-heading {
+  margin-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.product-list-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+
+.product-list-image {
+  display: flex;
+  min-height: 90px;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background-color: #d8d8d8;
+  color: #444444;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.product-list-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-list-details {
+  padding: 12px 16px 12px 0;
+}
+
+.product-list-details h3 {
+  margin: 0 0 4px;
+}
+
+.product-list-price {
+  margin: 0;
+  font-weight: bold;
+}
+
+@media (max-width: 500px) {
+  .product-list-item {
+    grid-template-columns: 70px 1fr;
+  }
+}
