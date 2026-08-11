@@ -1,0 +1,50 @@
+.profile-page {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background-color: #2e7d32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.profile-card h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.profile-location {
+  margin: 0.5rem 0 1.5rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.profile-info {
+  border-top: 1px solid #ddd;
+  padding-top: 1.5rem;
+  text-align: left;
+}
+
+.profile-info p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
