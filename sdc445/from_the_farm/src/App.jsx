@@ -28,7 +28,7 @@ import Menu from "./components/Menu";
 import Searchbar from "./components/Searchbar";
 import NewsCard from "./components/NewsCard";
 import ProductCard from "./components/ProductCard";
-import ProductCatalog from "./components/ProductCatalog";
+import Profile from "./components/Profile";
 
 // ==========================
 // Main Application Component
@@ -54,49 +54,20 @@ function App() {
   // ==========================
 
   function handleBackClick() {
-    if (currentPage === "catalog") {
-      setCurrentPage("home");
-      setStatusMessage("Back selected: returning to the homepage.");
-      return;
-    }
-
     setStatusMessage(
       "Back selected: returning to the previous page."
     );
   }
 
   function handleHomeClick() {
-    if (currentPage === "home") {
-      setStatusMessage(
-        "Home selected: you are already on the homepage."
-      );
-      return;
-    }
-
     setCurrentPage("home");
-    setStatusMessage("Home selected: returning to the homepage.");
+    setStatusMessage(
+      "Home selected: you are already on the homepage."
+    );
   }
 
   function handleMenuClick() {
     setIsMenuOpen((currentMenuState) => !currentMenuState);
-  }
-
-  function handleNavigate(page) {
-    setIsMenuOpen(false);
-
-    if (page === "products") {
-      setCurrentPage("catalog");
-      setStatusMessage("Viewing the product catalog.");
-      return;
-    }
-
-    if (page === "home") {
-      setCurrentPage("home");
-      setStatusMessage("Home selected: you are already on the homepage.");
-      return;
-    }
-
-    setStatusMessage(`The ${page} page is not built yet.`);
   }
 
   function handleSearch() {
@@ -113,6 +84,11 @@ function App() {
     setStatusMessage(
       `Search results for: ${cleanedSearchText}`
     );
+  }
+
+  function handleProfileClick() {
+    setCurrentPage("profile");
+    setIsMenuOpen(false);
   }
 
   // ==========================
@@ -154,7 +130,7 @@ function App() {
   ];
 
   // ==========================
-  // Render Homepage
+  // Render Application
   // ==========================
 
   return (
@@ -169,30 +145,32 @@ function App() {
 
       {/* Navigation Menu */}
 
-      {isMenuOpen && <Menu onNavigate={handleNavigate} />}
+      {isMenuOpen && (
+        <Menu onProfileClick={handleProfileClick} />
+      )}
 
       {/* Main Page Content */}
 
       <main className="main-content">
-        {/* Search Section */}
-
-        <Searchbar
-          searchText={searchText}
-          onSearchTextChange={setSearchText}
-          onSearch={handleSearch}
-        />
-
-        <p
-          className="status-message"
-          aria-live="polite"
-        >
-          {statusMessage}
-        </p>
-
-        {/* Page Content */}
-
-        {currentPage === "home" ? (
+        {currentPage === "profile" ? (
+          <Profile />
+        ) : (
           <>
+            {/* Search Section */}
+
+            <Searchbar
+              searchText={searchText}
+              onSearchTextChange={setSearchText}
+              onSearch={handleSearch}
+            />
+
+            <p
+              className="status-message"
+              aria-live="polite"
+            >
+              {statusMessage}
+            </p>
+
             {/* Hero Section */}
 
             <section className="hero-section">
@@ -242,8 +220,6 @@ function App() {
               </div>
             </section>
           </>
-        ) : (
-          <ProductCatalog />
         )}
       </main>
 
