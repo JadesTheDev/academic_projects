@@ -4,20 +4,29 @@ SDC445 - Interface Design
 From the Farm
 
 Description:
-Profile page with an editable bio text field. The bio uses
-React state as a controlled component for user input.
+Profile page with an editable bio field.
+The bio is displayed normally by default and switches
+into edit mode when the pencil button is selected.
 =========================================================
 */
 
 import React, { useState } from "react";
 import "./Profile.css";
 
-const DEFAULT_BIO = "Local produce enthusiast and supporter of small farms.";
+const DEFAULT_BIO =
+  "Local produce enthusiast and supporter of small farms.";
 
 const Profile = () => {
-  const [bioDraft, setBioDraft] = useState(DEFAULT_BIO);
   const [savedBio, setSavedBio] = useState(DEFAULT_BIO);
+  const [bioDraft, setBioDraft] = useState(DEFAULT_BIO);
+  const [isEditingBio, setIsEditingBio] = useState(false);
   const [bioMessage, setBioMessage] = useState("");
+
+  function handleEditBio() {
+    setBioDraft(savedBio);
+    setBioMessage("");
+    setIsEditingBio(true);
+  }
 
   function handleBioChange(event) {
     setBioDraft(event.target.value);
@@ -32,61 +41,122 @@ const Profile = () => {
       return;
     }
 
-    setBioDraft(cleanedBio);
     setSavedBio(cleanedBio);
-    setBioMessage("Bio saved successfully.");
+    setBioDraft(cleanedBio);
+    setBioMessage("Bio updated successfully.");
+    setIsEditingBio(false);
+  }
+
+  function handleCancelEdit() {
+    setBioDraft(savedBio);
+    setBioMessage("");
+    setIsEditingBio(false);
   }
 
   return (
     <main className="profile-page">
-      <div className="profile-card">
-        <div className="profile-avatar">
-          👤
+      <section className="profile-card">
+
+        {/* Profile Header */}
+        <div className="profile-header">
+          <div className="profile-avatar" aria-hidden="true">
+            👤
+          </div>
+
+          <div className="profile-heading">
+            <h1>John Farmer</h1>
+            <p className="profile-location">Charleston, SC</p>
+
+            <div className="profile-meta">
+              <span>Customer</span>
+              <span>Member since January 2026</span>
+            </div>
+          </div>
         </div>
 
-        <h1>John Farmer</h1>
-        <p className="profile-location">Charleston, SC</p>
+        {/* Profile Details */}
+        <div className="profile-content">
 
-        <div className="profile-info">
-          <p>
-            <strong>Member since:</strong> January 2026
-          </p>
-
-          <div className="profile-bio-section">
-            <label htmlFor="profile-bio">
-              <strong>Bio</strong>
-            </label>
-
-            <textarea
-              id="profile-bio"
-              className="profile-bio-input"
-              value={bioDraft}
-              onChange={handleBioChange}
-              maxLength={240}
-              rows={4}
-              placeholder="Tell the community a little about yourself..."
-            />
-
-            <div className="profile-bio-actions">
-              <span>{bioDraft.length}/240</span>
-              <button type="button" onClick={handleSaveBio}>
-                Save Bio
-              </button>
+          <div className="profile-section-heading">
+            <div>
+              <p className="profile-eyebrow">ABOUT</p>
+              <h2>Bio</h2>
             </div>
 
-            {bioMessage && (
-              <p className="profile-bio-message" aria-live="polite">
-                {bioMessage}
-              </p>
+            {!isEditingBio && (
+              <button
+                type="button"
+                className="bio-edit-button"
+                onClick={handleEditBio}
+                aria-label="Edit bio"
+                title="Edit bio"
+              >
+                ✏️
+              </button>
             )}
           </div>
 
-          <div className="profile-saved-bio">
-            <strong>About:</strong>
-            <p>{savedBio}</p>
-          </div>
+          {/* Normal Bio View */}
+          {!isEditingBio && (
+            <div className="profile-bio-display">
+              <p>{savedBio}</p>
+            </div>
+          )}
+
+          {/* Editable Bio View */}
+          {isEditingBio && (
+            <div className="profile-bio-editor">
+              <label htmlFor="profile-bio">
+                Edit your bio
+              </label>
+
+              <textarea
+                id="profile-bio"
+                className="profile-bio-input"
+                value={bioDraft}
+                onChange={handleBioChange}
+                maxLength={240}
+                rows={5}
+                placeholder="Tell the community a little about yourself..."
+              />
+
+              <div className="profile-editor-footer">
+                <span className="bio-character-count">
+                  {bioDraft.length}/240
+                </span>
+
+                <div className="profile-bio-actions">
+                  <button
+                    type="button"
+                    className="bio-cancel-button"
+                    onClick={handleCancelEdit}
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    type="button"
+                    className="bio-save-button"
+                    onClick={handleSaveBio}
+                  >
+                    Save Bio
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {bioMessage && (
+            <p
+              className="profile-bio-message"
+              aria-live="polite"
+            >
+              {bioMessage}
+            </p>
+          )}
+
         </div>
-      </div>
+      </section>
     </main>
   );
 };
