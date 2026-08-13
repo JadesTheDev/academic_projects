@@ -4,9 +4,8 @@ SDC445 - Interface Design
 From the Farm
 
 Description:
-Map page prototype for discovering nearby farms, markets,
-and local food listings. Locations are sample data and the
-map is a visual placeholder for a future mapping service.
+Interactive map page for discovering nearby farms,
+farmers' markets, and local suppliers.
 =========================================================
 */
 
@@ -48,24 +47,15 @@ function MapPage() {
       </div>
 
       <div className="map-layout">
-        <div className="map-canvas" aria-label="Map preview placeholder">
-          <div className="map-road map-road-one" />
-          <div className="map-road map-road-two" />
-          <div className="map-road map-road-three" />
-
-          <button className="map-pin pin-one" type="button" aria-label="Lowcountry Family Farm">
-            <span>1</span>
-          </button>
-          <button className="map-pin pin-two" type="button" aria-label="Saturday Community Market">
-            <span>2</span>
-          </button>
-          <button className="map-pin pin-three" type="button" aria-label="Creekside Honey and Produce">
-            <span>3</span>
-          </button>
-
-          <div className="map-placeholder-label">
-            Interactive map coming in a future version
-          </div>
+        <div className="map-canvas">
+          <iframe
+            className="google-map-frame"
+            title="Interactive map of local farms and farmers markets near Charleston, South Carolina"
+            src="https://www.google.com/maps?q=farmers%20markets%20and%20farms%20near%20Charleston%2C%20SC&z=10&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
 
         <div className="map-results">
