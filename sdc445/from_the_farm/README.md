@@ -1,243 +1,149 @@
-# From the Farm
-# By Jade Powell, Holly Hebert, Patrick Gonzalez
-# SDC445 - Mr. Bellet: Interface Design ii
+From the Farm
+By Jade Powell, Holly Hebert, and Patrick Gonzalez
+SDC445 - Mr. Bellet: Interface Design II
 
-From the Farm is a community-focused React application that helps users discover nearby farms, farmers' markets, seasonal products, local food, and community events.
+From the Farm is a community-focused React application that helps users discover nearby farms, farmers' markets, seasonal produce, local food, and community events.
 
-This project was created for SDC445.
+The application is designed as a local marketplace and discovery platform where customers can find products and producers in their area.
 
-## Week 1 Features
+This project was created for SDC445 and will continue to expand throughout the course.
 
-- React components and JSX
-- Controlled search input using React state
-- Search button functionality
-- Back button functionality
-- Home button functionality
-- Graphic placeholder
-- Recent news cards
-- Product cards
-- Responsive homepage layout
+Week 1 Features
+React components and JSX
+Controlled search input using React state
+Search button functionality
+Back button functionality
+Home button functionality
+Graphic placeholder
+Recent news cards
+Product cards
+Responsive homepage layout
+Initial project file structure
+Week 1 Components
+App.jsx manages the homepage and React state.
+Header.jsx contains the navigation controls.
+Searchbar.jsx contains the controlled search input.
+NewsCard.jsx creates reusable news cards.
+ProductCard.jsx creates reusable product cards.
+Week 2 Features
+Expanded React state management using useState
+Menu navigation
+Additional button functionality
+Updated header navigation
+Profile page
+Product and supplier pages
+Improved project file structure
+GitHub Pages deployment
+Continued responsive layout development
+Week 2 Team Contributions
+Jade Powell
+Application architecture
+State management
+Menu implementation
+Project file structure updates
+GitHub repository management
+GitHub Pages deployment
+Project integration and testing
+Holly Hebert
+Searchbar component
+Search button functionality
+Search input handling
+Profile development
+Patrick Gonzalez
+Header component updates
+Back button functionality
+Button testing
+Product and supplier development
+Week 3 Features
+Log In page
+Controlled email and password fields
+Editable profile bio
+User input validation and handling
+Map page
+Google Maps integration
+Seasonal Calendar page
+Expanded page navigation
+Improved dropdown Menu
+Responsive Menu layout
+Listings navigation
+Supplier navigation
+Updated marketplace terminology
+Week 3 User Input
 
-## Components
-
-- `App.jsx` manages the homepage and React state.
-- `Header.jsx` contains the navigation buttons and placeholders.
-- `Searchbar.jsx` contains the controlled search input.
-- `NewsCard.jsx` creates reusable news cards.
-- `ProductCard.jsx` creates reusable product cards.
-
-## Running the Project
-
-Install the required dependencies:
-
-```bash
-npm install
-
-## Week 2 Features
-
-# From the Farm
-
-## SDC445 - Interface Design
-### ECPI University
-
-**Project:** From the Farm  
-**Authors:** Jade Powell, Holly Hebert, Patrick Gonzalez
-
----
-
-## Project Description
-
-From the Farm is a community-focused React application that helps users discover nearby farms, farmers' markets, seasonal products, local food, and community events.
-
-This project is being developed throughout the SDC445 course and will continue to expand with additional pages and features over the term.
-
----
-
-## Current Features
-
-- React Components and JSX
-- State Management using `useState`
-- Search Text Field
-- Search Button
-- Back Button
-- Home Button
-- Menu Button
-- Responsive Header Layout
-- GitHub Pages Deployment
-
----
-
-## Team Contributions
-
-### Jade Powell
-- App architecture
-- State management (`useState`)
-- Menu button implementation
-- GitHub repository setup
-- GitHub Pages deployment
-- Project integration and testing
-
-### Holly Hebert
-- Searchbar component
-- Search button functionality
-- Search input handling
-
-### Patrick Gonzalez
-- Header component updates
-- Back button functionality
-- Button testing
-
----
-
-## Project Structure
-
-```
-from_the_farm/
-│
-├── public/
-│   └── index.html
-│
-├── src/
-│   ├── App.jsx
-│   ├── Header.jsx
-│   ├── Menu.jsx
-│   ├── Searchbar.jsx
-│   ├── ProductCard.jsx
-│   ├── NewsCard.jsx
-│   ├── App.css
-│   ├── index.css
-│   └── index.js
-│
-├── package.json
-├── package-lock.json
-└── README.md
-```
-
----
-
-## Future Development
-
-Planned features include:
-
-- Product listings
-- Farm profiles
-- Interactive map
-- Seasonal produce calendar
-- Shopping cart
-- User accounts
-- Community events
-- Ratings and reviews
-- Navigation between pages
-
----
-
-## Live Project
-
-https://jadesthedev.github.io/academic_projects/
-
-
-## Week 3 Features
-
-The application currently includes:
-
-- Home page
-- Search functionality
-- Listings
-- Supplier navigation
-- Map
-- Seasonal Calendar
-- News
-- Log In
-- User Profile
-- Editable Profile Bio
-- Back navigation
-- Home navigation
-- Cart navigation
-- Dropdown Menu
-
----
-
-## User Input
-
-Week 3 introduced controlled user input into the React application.
+Week 3 introduced additional controlled user input into the application.
 
 The Log In page contains controlled text fields for:
 
-- Email address
-- Password
+Email address
+Password
 
-The Profile page also contains an editable Bio field that allows the user to enter and save profile information.
+The Profile page contains an editable Bio field that allows users to enter and save profile information.
 
-React state and `onChange` event handling are used to manage field values and respond to user input.
+React state and onChange event handling are used to manage field values and respond to user input.
 
----
+Week 3 Marketplace Updates
 
-## Navigation
+During Week 3, the purpose of From the Farm was further refined as a local marketplace and discovery platform rather than a traditional online grocery or delivery service.
 
-Navigation was expanded during Week 3 to accommodate the growing application.
+Products are being renamed to Listings.
+Customers can browse listings from local producers.
+Supplier accounts will eventually be able to create and manage listings.
+Supplier functionality will be associated with users who register as suppliers.
+The Map helps users discover farms, farmers' markets, and local suppliers.
+The Seasonal Calendar helps users identify produce commonly available during different seasons.
+Current Components
+App.jsx manages application state and page navigation.
+Header.jsx contains the main application controls.
+Menu.jsx provides navigation between application pages.
+Searchbar.jsx manages homepage search input.
+NewsCard.jsx creates reusable news cards.
+ProductCard.jsx creates reusable listing cards.
+Login.jsx provides controlled Log In fields.
+Profile.jsx displays profile information and the editable Bio field.
+MapPage.jsx provides local farm, market, and supplier discovery.
+SeasonalCalendar.jsx displays seasonal produce information.
+Technologies Used
+React
+JavaScript
+JSX
+CSS
+HTML
+Git
+GitHub
+GitHub Pages
+Google Maps
+Figma
+Future Development
 
-The header provides quick access to major application controls, while the Menu provides access to the primary content pages.
+Planned features include:
 
-The application also includes Back and Home navigation to make movement between pages easier and more consistent.
+Supplier registration
+Customer and supplier account types
+Supplier listing management
+Expanded local map search
+Map search categories
+Improved profile editing
+Expanded seasonal calendar
+Community events
+Ratings and reviews
+Shopping and reservation features
+Continued mobile interface improvements
+Running the Project
 
----
+Install the required dependencies with npm install.
 
-## Marketplace Direction
+Start the development version of the application with npm start.
 
-During Week 3, the team further clarified the purpose of From the Farm.
+Repository
 
-The application is intended to function as a local marketplace and discovery platform rather than a traditional online grocery store or delivery service.
+This project is maintained as part of the SDC445 coursework in the academic_projects repository.
 
-Because of this:
+Project directory: sdc445/from_the_farm
 
-- **Products** are being renamed to **Listings**.
-- Customers will be able to browse listings from local producers.
-- Supplier accounts will eventually have additional functionality for creating and managing listings.
-- Supplier functionality will be associated with users who register as suppliers.
-- The Map will help users discover farms, farmers markets, and suppliers in their area.
-- The Seasonal Calendar will help users determine what products may be available throughout the year.
+Live Application
 
----
+The current version of From the Farm is deployed through GitHub Pages:
 
-## Technologies Used
+https://jadesthedev.github.io/academic_projects/
 
-- React
-- JavaScript
-- JSX
-- CSS
-- HTML
-- Git
-- GitHub
-- GitHub Pages
-- Figma
-
----
-
-## Current Development Status
-
-From the Farm now has the core structure needed to continue developing the marketplace experience.
-
-The project currently supports multiple application pages, navigation between those pages, user text input, profile information, search functionality, and location/seasonal discovery interfaces.
-
-Future development will continue replacing demonstration content with functional marketplace features and expanding supplier and listing functionality.
-
----
-
-## Repository
-
-This project is maintained as part of the SDC445 coursework in the `academic_projects` repository.
-
-**Project directory:**  
-`sdc445/from_the_farm`
-
----
-
-## Live Application
-
-The current version of From the Farm is deployed through GitHub Pages.
-
-`https://jadesthedev.github.io/academic_projects/`
-
----
-
-Created for **SDC445 – Interface Design**.
+Created for SDC445 – Interface Design II at ECPI University.
