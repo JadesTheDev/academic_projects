@@ -1,125 +1,416 @@
+/* =====================================================
+   Profile Page
+   ===================================================== */
+
 .profile-page {
   display: flex;
   justify-content: center;
-  padding: 2rem 1rem;
+  align-items: flex-start;
+  padding: 3rem 1.5rem;
 }
+
+
+/* =====================================================
+   Main Profile Card
+   ===================================================== */
 
 .profile-card {
   width: 100%;
-  max-width: 600px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 12px;
+  max-width: 760px;
+  overflow: hidden;
+
+  background: #111111;
+  color: #ffffff;
+
+  border: 1px solid #333333;
+  border-radius: 16px;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =====================================================
+   Profile Header
+   ===================================================== */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
   padding: 2rem;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(73, 107, 61, 0.3),
+      rgba(17, 17, 17, 0)
+    );
 }
 
 .profile-avatar {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
-  background-color: #2e7d32;
+  width: 105px;
+  height: 105px;
+
+  flex-shrink: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+
+  border-radius: 50%;
+
+  background: #496b3d;
+
+  font-size: 3rem;
+
+  box-shadow:
+    0 0 0 5px rgba(255, 255, 255, 0.05);
 }
 
-.profile-card h1 {
+.profile-heading {
+  min-width: 0;
+}
+
+.profile-heading h1 {
   margin: 0;
+
   font-size: 2rem;
+  line-height: 1.1;
 }
 
 .profile-location {
-  margin: 0.5rem 0 1.5rem;
-  color: #666;
-  font-size: 1.1rem;
+  margin: 0.45rem 0 1rem;
+
+  color: #b7b7b7;
+
+  font-size: 1rem;
 }
 
-.profile-info {
-  border-top: 1px solid #ddd;
-  padding-top: 1.5rem;
-  text-align: left;
+.profile-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
 
-.profile-info > p {
-  margin: 0 0 1rem;
-  line-height: 1.6;
+.profile-meta span {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.4rem 0.7rem;
+
+  border: 1px solid #3b4f35;
+  border-radius: 999px;
+
+  background: rgba(73, 107, 61, 0.16);
+
+  color: #bcd1b5;
+
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
-.profile-bio-section {
-  margin-top: 1.25rem;
+
+/* =====================================================
+   Main Profile Content
+   ===================================================== */
+
+.profile-content {
+  padding: 1.75rem 2rem 2rem;
+
+  border-top: 1px solid #292929;
 }
 
-.profile-bio-section label {
-  display: block;
-  margin-bottom: 0.55rem;
-}
-
-.profile-bio-input {
-  width: 100%;
-  min-height: 110px;
-  resize: vertical;
-  padding: 0.8rem;
-  border: 1px solid #999;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #222222;
-  font: inherit;
-  line-height: 1.45;
-}
-
-.profile-bio-input:focus {
-  outline: 3px solid rgba(73, 107, 61, 0.22);
-  border-color: #496b3d;
-}
-
-.profile-bio-actions {
+.profile-section-heading {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+
   gap: 1rem;
-  margin-top: 0.65rem;
+
+  margin-bottom: 1rem;
 }
 
-.profile-bio-actions span {
-  color: #666;
-  font-size: 0.82rem;
+.profile-eyebrow {
+  margin: 0 0 0.25rem;
+
+  color: #8caf80;
+
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
 }
 
-.profile-bio-actions button {
-  padding: 0.6rem 1rem;
-  border: 1px solid #36512d;
-  border-radius: 7px;
-  background: #496b3d;
-  color: white;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 150ms ease, transform 150ms ease;
+.profile-section-heading h2 {
+  margin: 0;
+
+  font-size: 1.35rem;
 }
 
-.profile-bio-actions button:hover {
+
+/* =====================================================
+   Bio Display
+   ===================================================== */
+
+.profile-bio-display {
+  position: relative;
+
+  min-height: 90px;
+
+  padding: 1.15rem 1.25rem;
+
+  border: 1px solid #2e2e2e;
+  border-radius: 10px;
+
+  background: #171717;
+}
+
+.profile-bio-display p {
+  margin: 0;
+
+  color: #e2e2e2;
+
+  line-height: 1.65;
+}
+
+
+/* =====================================================
+   Pencil Edit Button
+   ===================================================== */
+
+.bio-edit-button {
+  width: 38px;
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #4f6e45;
+  border-radius: 8px;
+
   background: #36512d;
-  transform: translateY(-1px);
+  color: #ffffff;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
-.profile-bio-message {
-  margin: 0.7rem 0 0;
-  color: #496b3d;
+.bio-edit-button:hover {
+  transform: scale(1.08);
+
+  background: #496b3d;
+
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.28);
+}
+
+.bio-edit-button:active {
+  transform: scale(0.96);
+}
+
+
+/* =====================================================
+   Bio Editor
+   ===================================================== */
+
+.profile-bio-editor {
+  padding: 1rem;
+
+  border: 1px solid #36512d;
+  border-radius: 10px;
+
+  background: #171717;
+}
+
+.profile-bio-editor label {
+  display: block;
+
+  margin-bottom: 0.6rem;
+
   font-size: 0.9rem;
   font-weight: 700;
 }
 
-.profile-saved-bio {
-  margin-top: 1.25rem;
-  padding-top: 1rem;
-  border-top: 1px solid #ddd;
+.profile-bio-input {
+  width: 100%;
+  min-height: 120px;
+
+  box-sizing: border-box;
+
+  resize: vertical;
+
+  padding: 0.9rem;
+
+  border: 1px solid #555555;
+  border-radius: 8px;
+
+  background: #101010;
+  color: #ffffff;
+
+  font: inherit;
+  line-height: 1.5;
 }
 
-.profile-saved-bio p {
-  margin: 0.4rem 0 0;
-  line-height: 1.55;
+.profile-bio-input:focus {
+  outline: 3px solid rgba(73, 107, 61, 0.28);
+
+  border-color: #66865a;
+}
+
+
+/* =====================================================
+   Editor Footer
+   ===================================================== */
+
+.profile-editor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-top: 0.8rem;
+}
+
+.bio-character-count {
+  color: #8e8e8e;
+
+  font-size: 0.8rem;
+}
+
+.profile-bio-actions {
+  display: flex;
+  gap: 0.65rem;
+}
+
+
+/* =====================================================
+   Bio Buttons
+   ===================================================== */
+
+.bio-save-button,
+.bio-cancel-button {
+  padding: 0.6rem 1rem;
+
+  border-radius: 7px;
+
+  font: inherit;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.bio-save-button {
+  border: 1px solid #608354;
+
+  background: #496b3d;
+  color: #ffffff;
+}
+
+.bio-save-button:hover {
+  transform: scale(1.04);
+
+  background: #5c7d50;
+
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, 0.24);
+}
+
+.bio-cancel-button {
+  border: 1px solid #555555;
+
+  background: #282828;
+  color: #e0e0e0;
+}
+
+.bio-cancel-button:hover {
+  transform: scale(1.04);
+
+  background: #373737;
+}
+
+.bio-save-button:active,
+.bio-cancel-button:active {
+  transform: scale(0.97);
+}
+
+
+/* =====================================================
+   Status Message
+   ===================================================== */
+
+.profile-bio-message {
+  margin: 0.8rem 0 0;
+
+  color: #8fbd7e;
+
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   Mobile Layout
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .profile-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .profile-header {
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 1.75rem 1.25rem;
+  }
+
+  .profile-meta {
+    justify-content: center;
+  }
+
+  .profile-content {
+    padding: 1.4rem 1.25rem 1.6rem;
+  }
+
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
+
+    font-size: 2.5rem;
+  }
+
+  .profile-heading h1 {
+    font-size: 1.7rem;
+  }
+
+  .profile-editor-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .profile-bio-actions {
+    width: 100%;
+  }
+
+  .bio-save-button,
+  .bio-cancel-button {
+    flex: 1;
+  }
+
 }
