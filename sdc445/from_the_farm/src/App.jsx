@@ -19,7 +19,6 @@ button functionality, menu visibility, and page content.
 // ==========================
 // Imports
 // ==========================
-
 import { useState } from "react";
 import "./App.css";
 
@@ -77,6 +76,10 @@ function App() {
   function handleHomeClick() {
     navigateTo("home");
     setStatusMessage("Welcome to From the Farm");
+  }
+
+  function handleLoginClick() {
+    navigateTo("login");
   }
 
   function handleMenuClick() {
@@ -155,7 +158,6 @@ function App() {
         return (
           <>
             {/* Search Section */}
-
             <Searchbar
               searchText={searchText}
               onSearchTextChange={setSearchText}
@@ -190,7 +192,6 @@ function App() {
 
             <section className="content-section">
               <h2>Recent News</h2>
-
               <div className="card-grid news-grid">
                 {newsItems.map((newsItem) => (
                   <NewsCard
@@ -206,7 +207,6 @@ function App() {
 
             <section className="content-section">
               <h2>For You</h2>
-
               <div className="card-grid product-grid">
                 {products.map((product) => (
                   <ProductCard
@@ -231,6 +231,7 @@ function App() {
       <Header
         onBackClick={handleBackClick}
         onHomeClick={handleHomeClick}
+        onLoginClick={handleLoginClick}
         onMenuClick={handleMenuClick}
       />
 
@@ -239,7 +240,6 @@ function App() {
           onHomeClick={handleHomeClick}
           onMapClick={() => navigateTo("map")}
           onCalendarClick={() => navigateTo("calendar")}
-          onLoginClick={() => navigateTo("login")}
           onProfileClick={() => navigateTo("profile")}
         />
       )}
