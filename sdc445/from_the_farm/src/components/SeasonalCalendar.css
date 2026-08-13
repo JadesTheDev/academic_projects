@@ -1,0 +1,75 @@
+.seasonal-page {
+  padding: 0 0 1rem;
+}
+
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.season-card {
+  padding: 1.35rem;
+  border: 1px solid #d7d7d7;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.season-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.season-icon {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #edf4ea;
+  font-size: 1.55rem;
+}
+
+.season-card h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.season-card-heading p {
+  margin: 0.25rem 0 0;
+  color: #6a6a6a;
+}
+
+.season-produce {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.produce-tag {
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: #f2eddb;
+  color: #3f4d36;
+  font-size: 0.9rem;
+}
+
+.seasonal-note {
+  margin-top: 1.5rem;
+  padding: 1rem 1.1rem;
+  border-left: 4px solid #496b3d;
+  background: #edf4ea;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .season-grid {
+    grid-template-columns: 1fr;
+  }
+}
