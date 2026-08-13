@@ -32,99 +32,18 @@
 }
 
 .map-canvas {
-  position: relative;
   min-height: 520px;
   overflow: hidden;
   border: 1px solid #b8c5b1;
   border-radius: 12px;
-  background:
-    linear-gradient(90deg, rgba(91, 126, 76, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(91, 126, 76, 0.08) 1px, transparent 1px),
-    #eaf1e4;
-  background-size: 42px 42px;
+  background: #eaf1e4;
 }
 
-.map-road {
-  position: absolute;
-  height: 16px;
-  border: 3px solid #ffffff;
-  border-radius: 999px;
-  background: #c9c3ae;
-  box-shadow: 0 0 0 1px rgba(90, 90, 90, 0.15);
-}
-
-.map-road-one {
-  width: 120%;
-  top: 34%;
-  left: -10%;
-  transform: rotate(-16deg);
-}
-
-.map-road-two {
-  width: 95%;
-  top: 64%;
-  left: 8%;
-  transform: rotate(22deg);
-}
-
-.map-road-three {
-  width: 80%;
-  top: 10%;
-  left: 18%;
-  transform: rotate(68deg);
-}
-
-.map-pin {
-  position: absolute;
-  z-index: 2;
-  width: 42px;
-  height: 42px;
-  border: 3px solid #ffffff;
-  border-radius: 50% 50% 50% 10%;
-  background: #496b3d;
-  color: #ffffff;
-  font-weight: 800;
-  transform: rotate(-45deg);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-}
-
-.map-pin:hover {
-  background: #36512d;
-}
-
-.map-pin span {
-  display: inline-block;
-  transform: rotate(45deg);
-}
-
-.pin-one {
-  top: 22%;
-  left: 25%;
-}
-
-.pin-two {
-  top: 50%;
-  left: 58%;
-}
-
-.pin-three {
-  top: 69%;
-  left: 35%;
-}
-
-.map-pin {
-  line-height: 1;
-}
-
-.map-placeholder-label {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0.55rem 0.75rem;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #555555;
-  font-size: 0.8rem;
+.google-map-frame {
+  display: block;
+  width: 100%;
+  height: 520px;
+  border: 0;
 }
 
 .map-results {
@@ -190,7 +109,9 @@
     grid-template-columns: 1fr;
   }
 
-  .map-canvas {
+  .map-canvas,
+  .google-map-frame {
     min-height: 390px;
+    height: 390px;
   }
 }
