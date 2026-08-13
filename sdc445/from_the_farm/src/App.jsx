@@ -11,7 +11,7 @@ Authors:
 Description:
 Main application component for the From the Farm project.
 This component manages the application's state,
-button functionality, menu visibility, and homepage content.
+button functionality, menu visibility, and page content.
 
 =========================================================
 */
@@ -29,6 +29,9 @@ import Searchbar from "./components/Searchbar";
 import NewsCard from "./components/NewsCard";
 import ProductCard from "./components/ProductCard";
 import Profile from "./components/Profile";
+import Login from "./components/Login";
+import MapPage from "./components/MapPage";
+import SeasonalCalendar from "./components/SeasonalCalendar";
 
 // ==========================
 // Main Application Component
@@ -48,22 +51,32 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [currentPage, setCurrentPage] = useState("home");
+  const [previousPage, setPreviousPage] = useState("home");
 
   // ==========================
-  // Button Functions
+  // Navigation Functions
   // ==========================
+
+  function navigateTo(page) {
+    if (page !== currentPage) {
+      setPreviousPage(currentPage);
+      setCurrentPage(page);
+    }
+
+    setIsMenuOpen(false);
+  }
 
   function handleBackClick() {
-    setStatusMessage(
-      "Back selected: returning to the previous page."
-    );
+    const pageToReturnTo = previousPage;
+    setPreviousPage(currentPage);
+    setCurrentPage(pageToReturnTo);
+    setIsMenuOpen(false);
+    setStatusMessage("Returned to the previous page.");
   }
 
   function handleHomeClick() {
-    setCurrentPage("home");
-    setStatusMessage(
-      "Home selected: you are already on the homepage."
-    );
+    navigateTo("home");
+    setStatusMessage("Welcome to From the Farm");
   }
 
   function handleMenuClick() {
@@ -84,11 +97,6 @@ function App() {
     setStatusMessage(
       `Search results for: ${cleanedSearchText}`
     );
-  }
-
-  function handleProfileClick() {
-    setCurrentPage("profile");
-    setIsMenuOpen(false);
   }
 
   // ==========================
@@ -130,31 +138,21 @@ function App() {
   ];
 
   // ==========================
-  // Render Application
+  // Page Rendering
   // ==========================
 
-  return (
-    <div className="app">
-      {/* Header */}
-
-      <Header
-        onBackClick={handleBackClick}
-        onHomeClick={handleHomeClick}
-        onMenuClick={handleMenuClick}
-      />
-
-      {/* Navigation Menu */}
-
-      {isMenuOpen && (
-        <Menu onProfileClick={handleProfileClick} />
-      )}
-
-      {/* Main Page Content */}
-
-      <main className="main-content">
-        {currentPage === "profile" ? (
-          <Profile />
-        ) : (
+  function renderCurrentPage() {
+    switch (currentPage) {
+      case "profile":
+        return <Profile />;
+      case "login":
+        return <Login />;
+      case "map":
+        return <MapPage />;
+      case "calendar":
+        return <SeasonalCalendar />;
+      default:
+        return (
           <>
             {/* Search Section */}
 
@@ -220,10 +218,35 @@ function App() {
               </div>
             </section>
           </>
-        )}
-      </main>
+        );
+    }
+  }
 
-      {/* Footer */}
+  // ==========================
+  // Render Application
+  // ==========================
+
+  return (
+    <div className="app">
+      <Header
+        onBackClick={handleBackClick}
+        onHomeClick={handleHomeClick}
+        onMenuClick={handleMenuClick}
+      />
+
+      {isMenuOpen && (
+        <Menu
+          onHomeClick={handleHomeClick}
+          onMapClick={() => navigateTo("map")}
+          onCalendarClick={() => navigateTo("calendar")}
+          onLoginClick={() => navigateTo("login")}
+          onProfileClick={() => navigateTo("profile")}
+        />
+      )}
+
+      <main className="main-content">
+        {renderCurrentPage()}
+      </main>
 
       <footer className="footer">
         <p>From the Farm — React Group Project</p>
@@ -231,9 +254,5 @@ function App() {
     </div>
   );
 }
-
-// ==========================
-// Export Component
-// ==========================
 
 export default App;
