@@ -6,7 +6,7 @@ From the Farm
 Description:
 Header component for the application.
 Displays the navigation buttons, application title,
-shopping cart button, and menu toggle.
+login button, shopping cart button, and menu toggle.
 
 =========================================================
 */
@@ -25,6 +25,7 @@ import { TfiHome } from "react-icons/tfi";
 function Header({
   onBackClick,
   onHomeClick,
+  onLoginClick,
   onMenuClick
 }) {
   return (
@@ -32,7 +33,6 @@ function Header({
       {/* Left Navigation */}
 
       <div className="header-navigation">
-
         <button
           type="button"
           className="header-button"
@@ -50,7 +50,6 @@ function Header({
         >
           <TfiHome />
         </button>
-
       </div>
 
       {/* Application Title */}
@@ -62,6 +61,13 @@ function Header({
       {/* Right Navigation */}
 
       <div className="header-placeholders">
+        <button
+          type="button"
+          className="header-button"
+          onClick={onLoginClick}
+        >
+          Log In
+        </button>
 
         <button
           type="button"
@@ -76,10 +82,10 @@ function Header({
           className="header-button"
           onClick={onMenuClick}
           aria-label="Menu"
+          aria-haspopup="menu"
         >
           Menu
         </button>
-
       </div>
     </header>
   );
