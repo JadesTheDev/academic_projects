@@ -1,23 +1,87 @@
-.menu{
-    width:250px;
-    height:100vh;
+/*
+=========================================================
+From the Farm - Dropdown Menu Styles
+=========================================================
+*/
 
-    background:#496B3D;
-    color:white;
-
-    padding:20px;
+.menu {
+  position: absolute;
+  top: 72px;
+  right: 24px;
+  z-index: 1000;
+  width: min(300px, calc(100vw - 32px));
+  padding: 14px;
+  background-color: #ffffff;
+  border: 1px solid #c9c9c9;
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
 }
 
-.menu h2{
-    margin-bottom:25px;
+.menu-title {
+  margin: 0 0 10px;
+  padding: 2px 4px 10px;
+  border-bottom: 1px solid #dddddd;
+  color: #222222;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
-.menu ul{
-    list-style:none;
-    padding:0;
+.menu-buttons {
+  display: grid;
+  gap: 8px;
 }
 
-.menu li{
-    padding:12px 0;
-    cursor:pointer;
+.menu-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid #b8b8b8;
+  border-radius: 7px;
+  background-color: #f2f2f2;
+  color: #222222;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.menu-button:hover,
+.menu-button:focus-visible {
+  background-color: #e3ecdF;
+  border-color: #6f8f59;
+  outline: none;
+}
+
+.menu-button:active {
+  transform: translateY(1px);
+}
+
+.menu-button span:first-child {
+  width: 1.5rem;
+  flex: 0 0 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .menu {
+    top: 182px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  .menu {
+    right: 12px;
+    width: min(280px, calc(100vw - 24px));
+  }
+
+  .menu-button {
+    padding: 12px;
+  }
 }
