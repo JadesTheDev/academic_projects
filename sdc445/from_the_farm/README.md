@@ -135,6 +135,109 @@ Planned features include:
 
 https://jadesthedev.github.io/academic_projects/
 
+
+## Week 3 Features
+
+The application currently includes:
+
+- Home page
+- Search functionality
+- Listings
+- Supplier navigation
+- Map
+- Seasonal Calendar
+- News
+- Log In
+- User Profile
+- Editable Profile Bio
+- Back navigation
+- Home navigation
+- Cart navigation
+- Dropdown Menu
+
+---
+
+## User Input
+
+Week 3 introduced controlled user input into the React application.
+
+The Log In page contains controlled text fields for:
+
+- Email address
+- Password
+
+The Profile page also contains an editable Bio field that allows the user to enter and save profile information.
+
+React state and `onChange` event handling are used to manage field values and respond to user input.
+
+---
+
+## Navigation
+
+Navigation was expanded during Week 3 to accommodate the growing application.
+
+The header provides quick access to major application controls, while the Menu provides access to the primary content pages.
+
+The application also includes Back and Home navigation to make movement between pages easier and more consistent.
+
+---
+
+## Marketplace Direction
+
+During Week 3, the team further clarified the purpose of From the Farm.
+
+The application is intended to function as a local marketplace and discovery platform rather than a traditional online grocery store or delivery service.
+
+Because of this:
+
+- **Products** are being renamed to **Listings**.
+- Customers will be able to browse listings from local producers.
+- Supplier accounts will eventually have additional functionality for creating and managing listings.
+- Supplier functionality will be associated with users who register as suppliers.
+- The Map will help users discover farms, farmers markets, and suppliers in their area.
+- The Seasonal Calendar will help users determine what products may be available throughout the year.
+
+---
+
+## Technologies Used
+
+- React
+- JavaScript
+- JSX
+- CSS
+- HTML
+- Git
+- GitHub
+- GitHub Pages
+- Figma
+
+---
+
+## Current Development Status
+
+From the Farm now has the core structure needed to continue developing the marketplace experience.
+
+The project currently supports multiple application pages, navigation between those pages, user text input, profile information, search functionality, and location/seasonal discovery interfaces.
+
+Future development will continue replacing demonstration content with functional marketplace features and expanding supplier and listing functionality.
+
+---
+
+## Repository
+
+This project is maintained as part of the SDC445 coursework in the `academic_projects` repository.
+
+**Project directory:**  
+`sdc445/from_the_farm`
+
+---
+
+## Live Application
+
+The current version of From the Farm is deployed through GitHub Pages.
+
+`https://jadesthedev.github.io/academic_projects/`
+
 ---
 
 Created for **SDC445 – Interface Design**.
