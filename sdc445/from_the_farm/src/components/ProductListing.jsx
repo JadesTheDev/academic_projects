@@ -33,12 +33,12 @@ function ProductListing({ product, onBack }) {
     );
   }
 
-  const { name, price, category, availability, supplier, emoji } = product;
+  const { name, price, category, availability, supplier, image } = product;
 
   return (
     <section className="listing-page">
-      <div className="listing-image" aria-hidden="true">
-        <span className="listing-emoji">{emoji}</span>
+      <div className="listing-image">
+        <img src={image} alt={name} className="listing-photo" />
       </div>
 
       <h2 className="listing-name">{name}</h2>
@@ -59,8 +59,8 @@ function ProductListing({ product, onBack }) {
 
       {/* Supplier snippet, linked from this product's Supplier Registry entry */}
       <div className="listing-supplier-card">
-        <div className="listing-supplier-image" aria-hidden="true">
-          <span>{emoji}</span>
+        <div className="listing-supplier-image">
+          <img src={image} alt="" className="listing-supplier-photo" />
         </div>
 
         <div className="listing-supplier-details">

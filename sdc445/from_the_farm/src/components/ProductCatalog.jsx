@@ -24,6 +24,16 @@ supplier carrying that product.
 import "./ProductCatalog.css";
 import ProductTile from "./ProductTile";
 
+import tomatoesPhoto from "../assets/products/tomatoes.jpg";
+import basilPhoto from "../assets/products/basil.jpg";
+import honeyPhoto from "../assets/products/honey.jpg";
+import cornPhoto from "../assets/products/corn.jpg";
+import eggsPhoto from "../assets/products/eggs.jpg";
+import spinachPhoto from "../assets/products/spinach.jpg";
+import peachesPhoto from "../assets/products/peaches.jpg";
+import chickenBreastPhoto from "../assets/products/chicken-breast.jpg";
+import baconPhoto from "../assets/products/bacon.jpg";
+
 // ==========================
 // Placeholder Data
 // ==========================
@@ -37,7 +47,7 @@ export const catalogProducts = [
     price: "$3.99 / lb",
     category: "Vegetables",
     availability: "In Stock",
-    emoji: "🍅",
+    image: tomatoesPhoto,
     supplier: {
       name: "Green Valley Farms",
       description:
@@ -51,7 +61,7 @@ export const catalogProducts = [
     price: "$2.39 / bunch",
     category: "Herbs",
     availability: "In Stock",
-    emoji: "🌿",
+    image: basilPhoto,
     supplier: {
       name: "Riverbend Herb Co.",
       description:
@@ -65,7 +75,7 @@ export const catalogProducts = [
     price: "$9.00 / jar",
     category: "Pantry",
     availability: "Low Stock",
-    emoji: "🍯",
+    image: honeyPhoto,
     supplier: {
       name: "Creekside Honey & Produce",
       description: "Wildflower honey, tomatoes, peppers, and squash.",
@@ -78,7 +88,7 @@ export const catalogProducts = [
     price: "$0.75 / ear",
     category: "Vegetables",
     availability: "In Stock",
-    emoji: "🌽",
+    image: cornPhoto,
     supplier: {
       name: "Green Valley Farms",
       description:
@@ -92,7 +102,7 @@ export const catalogProducts = [
     price: "$5.49 / dozen",
     category: "Dairy & Eggs",
     availability: "In Stock",
-    emoji: "🥚",
+    image: eggsPhoto,
     supplier: {
       name: "Sunrise Poultry Farm",
       description:
@@ -106,7 +116,7 @@ export const catalogProducts = [
     price: "$3.25 / bag",
     category: "Vegetables",
     availability: "Out of Stock",
-    emoji: "🥬",
+    image: spinachPhoto,
     supplier: {
       name: "Green Valley Farms",
       description:
@@ -120,7 +130,7 @@ export const catalogProducts = [
     price: "$4.50 / lb",
     category: "Fruits",
     availability: "In Stock",
-    emoji: "🍑",
+    image: peachesPhoto,
     supplier: {
       name: "Hilltop Orchard",
       description: "Third-generation orchard growing stone fruit and apples.",
@@ -133,7 +143,7 @@ export const catalogProducts = [
     price: "$6.99 / lb",
     category: "Meat",
     availability: "In Stock",
-    emoji: "🍗",
+    image: chickenBreastPhoto,
     supplier: {
       name: "Sunrise Poultry Farm",
       description:
@@ -147,7 +157,7 @@ export const catalogProducts = [
     price: "$7.49 / lb",
     category: "Meat",
     availability: "Low Stock",
-    emoji: "🥓",
+    image: baconPhoto,
     supplier: {
       name: "Oakwood Smokehouse",
       description: "Small-batch, hickory-smoked bacon and cured meats.",

@@ -19,7 +19,7 @@ carrying it.
 import "./ProductTile.css";
 
 function ProductTile({ product, onSelect }) {
-  const { name, price, category, availability, supplier, emoji } = product;
+  const { name, price, category, availability, supplier, image } = product;
 
   return (
     <button
@@ -27,8 +27,8 @@ function ProductTile({ product, onSelect }) {
       className="product-tile"
       onClick={() => onSelect && onSelect(product)}
     >
-      <div className="product-tile-image" aria-hidden="true">
-        <span className="product-tile-emoji">{emoji}</span>
+      <div className="product-tile-image">
+        <img src={image} alt={name} className="product-tile-photo" />
       </div>
 
       <div className="product-tile-details">
