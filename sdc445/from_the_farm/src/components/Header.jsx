@@ -6,7 +6,7 @@ From the Farm
 Description:
 Header component for the application.
 Displays the navigation buttons, application title,
-login button, shopping cart button, and menu toggle.
+login button, and menu toggle.
 
 =========================================================
 */
@@ -67,14 +67,6 @@ function Header({
           onClick={onLoginClick}
         >
           Log In
-        </button>
-
-        <button
-          type="button"
-          className="header-button"
-          aria-label="Shopping Cart"
-        >
-          Cart
         </button>
 
         <button

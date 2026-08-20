@@ -13,6 +13,7 @@ import "./Menu.css";
 
 function Menu({
   onHomeClick,
+  onListingsClick,
   onMapClick,
   onCalendarClick,
   onProfileClick
@@ -27,14 +28,9 @@ function Menu({
           <span>Home</span>
         </button>
 
-        <button type="button" className="menu-button" role="menuitem">
+        <button type="button" className="menu-button" onClick={onListingsClick} role="menuitem">
           <span aria-hidden="true">🧺</span>
           <span>Listings</span>
-        </button>
-
-        <button type="button" className="menu-button" role="menuitem">
-          <span aria-hidden="true">🚜</span>
-          <span>Suppliers</span>
         </button>
 
         <button type="button" className="menu-button" onClick={onMapClick} role="menuitem">

@@ -31,6 +31,8 @@ import Profile from "./components/Profile";
 import Login from "./components/Login";
 import MapPage from "./components/MapPage";
 import SeasonalCalendar from "./components/SeasonalCalendar";
+import ProductCatalog from "./components/ProductCatalog";
+import ProductListing from "./components/ProductListing";
 
 // ==========================
 // Main Application Component
@@ -51,6 +53,7 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState("home");
   const [previousPage, setPreviousPage] = useState("home");
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   // ==========================
   // Navigation Functions
@@ -80,6 +83,11 @@ function App() {
 
   function handleLoginClick() {
     navigateTo("login");
+  }
+
+  function handleSelectProduct(product) {
+    setSelectedProduct(product);
+    navigateTo("productListing");
   }
 
   function handleMenuClick() {
@@ -154,6 +162,15 @@ function App() {
         return <MapPage />;
       case "calendar":
         return <SeasonalCalendar />;
+      case "listings":
+        return <ProductCatalog onSelectProduct={handleSelectProduct} />;
+      case "productListing":
+        return (
+          <ProductListing
+            product={selectedProduct}
+            onBack={() => navigateTo("listings")}
+          />
+        );
       default:
         return (
           <>
@@ -238,6 +255,7 @@ function App() {
       {isMenuOpen && (
         <Menu
           onHomeClick={handleHomeClick}
+          onListingsClick={() => navigateTo("listings")}
           onMapClick={() => navigateTo("map")}
           onCalendarClick={() => navigateTo("calendar")}
           onProfileClick={() => navigateTo("profile")}
