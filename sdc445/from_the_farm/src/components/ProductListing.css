@@ -1,0 +1,148 @@
+/*
+=========================================================
+SDC445 - Interface Design
+From the Farm
+
+Description:
+Styles for the Product Listing page, matching the cream
+background and card styling used across the catalog
+screens in the Visual Foundation design.
+
+=========================================================
+*/
+
+.listing-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2eddb;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+
+.listing-image {
+  display: flex;
+  min-height: 220px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  background: linear-gradient(160deg, #eef4e6, #d9e7cb);
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+
+.listing-emoji {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.listing-name {
+  margin: 0 0 6px;
+}
+
+.listing-price {
+  margin: 0 0 12px;
+  font-weight: bold;
+  color: #35521f;
+}
+
+.listing-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.listing-badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.listing-category {
+  background-color: #e6e6e6;
+  color: #333333;
+}
+
+.listing-availability.is-in-stock {
+  background-color: #dcf1d6;
+  color: #2b6b1f;
+}
+
+.listing-availability.is-low-stock {
+  background-color: #fbecc7;
+  color: #8a5a00;
+}
+
+.listing-availability.is-out-of-stock {
+  background-color: #f5d7d7;
+  color: #a02323;
+}
+
+.listing-supplier-heading {
+  margin: 0 0 8px;
+}
+
+.listing-supplier-card {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+
+.listing-supplier-image {
+  display: flex;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  background-color: #eef4e6;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 1.8rem;
+}
+
+.listing-supplier-details h4 {
+  margin: 0 0 4px;
+}
+
+.listing-supplier-description {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #555555;
+}
+
+.listing-supplier-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+}
+
+.listing-back-button {
+  margin-top: 20px;
+  padding: 10px 18px;
+  border: 1px solid #555555;
+  border-radius: 4px;
+  background-color: #eeeeee;
+  color: #222222;
+  cursor: pointer;
+}
+
+.listing-back-button:hover {
+  background-color: #dddddd;
+}
+
+@media (max-width: 500px) {
+  .listing-supplier-card {
+    grid-template-columns: 48px 1fr;
+  }
+
+  .listing-supplier-rating {
+    grid-column: 1 / -1;
+  }
+}
