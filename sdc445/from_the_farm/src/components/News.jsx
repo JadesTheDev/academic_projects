@@ -1,107 +1,95 @@
-.catalog-page {
-  padding: 1.35rem;
+import "./News.css";
 
-  background: var(--surface-muted);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-}
+import farmExpandsImage from "../assets/products/farm-expands.jpg";
+import farmersMarketImage from "../assets/products/farmers-market.jpg";
+import communityFarmDayImage from "../assets/products/community-farm.jpg";
+import severeWeatherImage from "../assets/products/severe-weather.jpg";
 
-.catalog-title-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-}
+const newsItems = [
+  {
+    id: 1,
+    type: "Supplier Update",
+    title: "First Late-Summer Harvest Is In",
+    source: "Green Valley Farms",
+    description:
+      "Heirloom tomatoes, sweet corn, and herbs are arriving at the farm stand this week.",
+    image: farmExpandsImage,
+  },
+  {
+    id: 2,
+    type: "Market",
+    title: "Farmers' Market Returns Saturday",
+    source: "Lowcountry Community Market",
+    description:
+      "Local growers, bakers, honey producers, and makers return Saturday from 8 AM–1 PM.",
+    image: farmersMarketImage,
+  },
+  {
+    id: 3,
+    type: "Community Alert",
+    title: "Storms Affect Some Local Crops",
+    source: "Community Update",
+    description:
+      "Recent storms may temporarily reduce availability of delicate greens and other seasonal produce.",
+    image: severeWeatherImage,
+  },
+  {
+    id: 4,
+    type: "Local Event",
+    title: "Community Farm Day Announced",
+    source: "Hilltop Orchard",
+    description:
+      "Farm tours, demonstrations, local vendors, and family activities are planned for the upcoming community day.",
+    image: communityFarmDayImage,
+  },
+];
 
-.catalog-heading {
-  margin: 0.1rem 0;
+function News() {
+  return (
+    <section className="news-page">
+      <div className="page-heading">
+        <p className="page-eyebrow">Around the community</p>
 
-  font-family: var(--font-heading);
-  font-size: 2.8rem;
-  font-weight: 600;
-}
+        <h2>News & Farm Updates</h2>
 
-.catalog-subheading {
-  margin: 0.2rem 0 0;
-  color: var(--muted);
-}
+        <p>
+          Harvest notes, restocks, farmers markets, events, and announcements
+          from the local food community.
+        </p>
+      </div>
 
-.catalog-count {
-  padding: 0.45rem 0.7rem;
+      <div className="news-list">
+        {newsItems.map((item) => (
+          <article
+            className="news-item"
+            key={item.id}
+          >
+            <img
+              className="news-image"
+              src={item.image}
+              alt=""
+            />
 
-  border-radius: 999px;
+            <div className="news-content">
+              <div className="news-meta">
+                <span className="news-type">
+                  {item.type}
+                </span>
 
-  background: var(--green-soft);
-  color: var(--green-dark);
+                <span>
+                  {item.source}
+                </span>
+              </div>
 
-  font-weight: 700;
-  white-space: nowrap;
-}
+              <h3>{item.title}</h3>
 
-.catalog-tools {
-  margin-top: 1.15rem;
-  padding: 1rem;
-
-  border: 1px solid var(--border);
-  border-radius: 12px;
-
-  background: var(--surface);
-}
-
-.catalog-tools > input {
-  width: 100%;
-  padding: 0.75rem 0.9rem;
-
-  border: 1px solid var(--border);
-  border-radius: 9px;
-
-  background: var(--surface);
-  color: var(--text);
-}
-
-.catalog-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-
-  margin-top: 0.7rem;
-}
-
-.catalog-filters button {
-  padding: 0.4rem 0.7rem;
-
-  border: 1px solid var(--border);
-  border-radius: 999px;
-
-  background: transparent;
-  color: var(--text);
-}
-
-.catalog-filters button:hover,
-.catalog-filters button.is-active {
-  background: var(--green);
-  border-color: var(--green);
-  color: #fff;
-}
-
-.product-grid-tiles {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(210px, 1fr)
+              <p>{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
-  gap: 1rem;
-
-  margin-top: 1rem;
 }
 
-@media (max-width: 560px) {
-  .catalog-title-row {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .product-grid-tiles {
-    grid-template-columns: 1fr;
-  }
-}
+export default News;
