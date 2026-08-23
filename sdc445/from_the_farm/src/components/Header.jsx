@@ -11,31 +11,23 @@ login button, and menu toggle.
 =========================================================
 */
 
-// ==========================
-// Imports
-// ==========================
-
 import { PiArrowElbowUpLeftBold } from "react-icons/pi";
 import { TfiHome } from "react-icons/tfi";
-
-// ==========================
-// Header Component
-// ==========================
+import plantLogo from "../assets/brand/plant-logo.svg";
 
 function Header({
   onBackClick,
   onHomeClick,
   onLoginClick,
-  onMenuClick
+  onMenuClick,
+  isMenuOpen,
 }) {
   return (
     <header className="header">
-      {/* Left Navigation */}
-
       <div className="header-navigation">
         <button
           type="button"
-          className="header-button"
+          className="header-icon-button"
           onClick={onBackClick}
           aria-label="Back"
         >
@@ -44,7 +36,7 @@ function Header({
 
         <button
           type="button"
-          className="header-button"
+          className="header-icon-button"
           onClick={onHomeClick}
           aria-label="Home"
         >
@@ -52,18 +44,24 @@ function Header({
         </button>
       </div>
 
-      {/* Application Title */}
+      <button
+        type="button"
+        className="brand-button"
+        onClick={onHomeClick}
+        aria-label="From the Farm home"
+      >
+        <img
+          src={plantLogo}
+          alt=""
+          className="brand-logo"
+        />
+        <span className="app-title">From the Farm</span>
+      </button>
 
-      <h1 className="app-title">
-        From the Farm
-      </h1>
-
-      {/* Right Navigation */}
-
-      <div className="header-placeholders">
+      <div className="header-actions">
         <button
           type="button"
-          className="header-button"
+          className="header-action-button"
           onClick={onLoginClick}
         >
           Log In
@@ -71,10 +69,11 @@ function Header({
 
         <button
           type="button"
-          className="header-button"
+          className="header-action-button"
           onClick={onMenuClick}
           aria-label="Menu"
           aria-haspopup="menu"
+          aria-expanded={isMenuOpen}
         >
           Menu
         </button>
@@ -82,9 +81,5 @@ function Header({
     </header>
   );
 }
-
-// ==========================
-// Export Component
-// ==========================
 
 export default Header;
