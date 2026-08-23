@@ -5,40 +5,19 @@ From the Farm
 
 Description:
 Styles for the News page, including local farm updates,
-community announcements, and responsive news cards.
+market announcements, community alerts, and events.
 
 =========================================================
 */
 
+
+/* =====================================================
+   News Page
+   ===================================================== */
+
 .news-page {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 1rem;
-}
-
-.news-container {
-  width: 100%;
-  max-width: 800px;
-}
-
-.news-container h1 {
-  margin-bottom: 0.5rem;
-
-  font-family: var(--font-heading);
-  font-size: 2.7rem;
-  font-weight: 600;
-  text-align: center;
-
-  color: var(--green-dark);
-}
-
-.news-intro {
-  margin-bottom: 2rem;
-
-  text-align: center;
-  color: var(--muted);
-
-  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 
@@ -49,70 +28,94 @@ community announcements, and responsive news cards.
 .news-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 
 /* =====================================================
-   News Cards
+   News Items
    ===================================================== */
 
 .news-item {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 1.15rem;
 
-  padding: 1.5rem;
-
-  background: var(--surface);
+  overflow: hidden;
+  padding: 0;
 
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
+
+  background: var(--surface);
 
   box-shadow: var(--shadow-soft);
 }
 
-.news-image {
-  width: 120px;
-  height: 90px;
 
-  flex-shrink: 0;
+/* =====================================================
+   News Images
+   ===================================================== */
+
+.news-image {
+  width: 190px;
+  height: 160px;
 
   object-fit: cover;
-
-  border-radius: 8px;
-}
-
-.news-content {
-  flex: 1;
-}
-
-.news-item h2 {
-  margin: 0.25rem 0 0.75rem;
-
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-.news-item p {
-  line-height: 1.6;
 }
 
 
 /* =====================================================
-   News Type
+   News Content
    ===================================================== */
 
-.news-type {
+.news-content {
+  padding: 1rem 1rem 1rem 0;
+}
+
+.news-content h3 {
+  margin: 0.3rem 0 0.5rem;
+
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.news-content > p {
   margin: 0;
 
-  color: var(--green);
+  color: var(--muted);
 
-  font-size: 0.9rem;
-  font-weight: bold;
-  text-transform: uppercase;
+  line-height: 1.55;
+}
+
+
+/* =====================================================
+   News Metadata
+   ===================================================== */
+
+.news-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.8rem;
+
+  color: var(--muted);
+
+  font-size: 0.86rem;
+}
+
+.news-type {
+  padding: 0.25rem 0.5rem;
+
+  border-radius: 999px;
+
+  background: var(--green-soft);
+  color: var(--green-dark);
+
+  font-weight: 800;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 
@@ -120,14 +123,17 @@ community announcements, and responsive news cards.
    Mobile Layout
    ===================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .news-item {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: 1fr;
   }
 
   .news-image {
     width: 100%;
     height: 190px;
+  }
+
+  .news-content {
+    padding: 0 1rem 1rem;
   }
 }
