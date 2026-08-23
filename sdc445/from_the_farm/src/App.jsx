@@ -33,6 +33,7 @@ import MapPage from "./components/MapPage";
 import SeasonalCalendar from "./components/SeasonalCalendar";
 import ProductCatalog from "./components/ProductCatalog";
 import ProductListing from "./components/ProductListing";
+import News from "./components/News";
 
 // ==========================
 // Main Application Component
@@ -171,6 +172,12 @@ function App() {
             onBack={() => navigateTo("listings")}
           />
         );
+      case "news":
+        return (
+          <News
+            newsItems={newsItems}
+          />
+        );
       default:
         return (
           <>
@@ -259,6 +266,7 @@ function App() {
           onMapClick={() => navigateTo("map")}
           onCalendarClick={() => navigateTo("calendar")}
           onProfileClick={() => navigateTo("profile")}
+          onNewsClick={() => navigateTo("news")}
         />
       )}
 
