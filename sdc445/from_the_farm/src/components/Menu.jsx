@@ -16,8 +16,11 @@ function Menu({
   onListingsClick,
   onMapClick,
   onCalendarClick,
-  onProfileClick
-}) {
+  onProfileClick,
+  onNewsClick,
+})
+
+{
   return (
     <nav className="menu" aria-label="Main navigation">
       <div className="menu-title">Explore</div>
@@ -43,7 +46,7 @@ function Menu({
           <span>Seasonal Calendar</span>
         </button>
 
-        <button type="button" className="menu-button" role="menuitem">
+        <button type="button" className="menu-button" onClick={onNewsClick} role="menuitem">
           <span aria-hidden="true">📰</span>
           <span>News</span>
         </button>
