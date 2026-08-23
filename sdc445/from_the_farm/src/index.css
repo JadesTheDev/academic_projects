@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Caveat:wght@500;600;700&family=Satisfy&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -6,19 +8,88 @@ html {
   font-size: 16px;
 }
 
+:root {
+  --font-brand: "Satisfy", "Segoe Script", cursive;
+  --font-heading: "Caveat", "Segoe Print", cursive;
+  --font-body: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+
+  --bg: #f4f1e8;
+  --surface: #fffdf7;
+  --surface-muted: #eee8d8;
+
+  --text: #27271f;
+  --muted: #686657;
+  --border: #cfc8b6;
+
+  --green: #496b3d;
+  --green-dark: #34502d;
+  --green-soft: #e3eadb;
+
+  --gold: #b8822f;
+
+  --shadow-soft: 0 8px 24px rgba(66, 55, 36, 0.09);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #20211f;
+    --surface: #292a26;
+    --surface-muted: #25271f;
+
+    --text: #f2eee2;
+    --muted: #c4beaf;
+    --border: #4a4a40;
+
+    --green: #66865a;
+    --green-dark: #88a77c;
+    --green-soft: #303d2b;
+
+    --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.22);
+  }
+}
+
 body {
   margin: 0;
   min-width: 320px;
-  background-color: #f5f5f5;
-  color: #222222;
-  font-family: Arial, Helvetica, sans-serif;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  line-height: 1.45;
 }
 
 button,
-input {
+input,
+textarea {
   font: inherit;
 }
 
 button {
   cursor: pointer;
+}
+
+a,
+button,
+input,
+textarea {
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(73, 107, 61, 0.35);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
 }
