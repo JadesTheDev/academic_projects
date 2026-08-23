@@ -110,3 +110,29 @@ the Listings page.
   font-size: 0.85rem;
   color: #555555;
 }
+
+.product-tile {
+  background-color: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+  border-radius: 12px;
+}
+
+.product-tile-name {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  font-weight: 600;
+}
+
+.product-tile-price {
+  color: var(--green-dark);
+}
+
+.product-tile-category {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.product-tile-supplier {
+  color: var(--muted);
+}
