@@ -1,79 +1,80 @@
 .menu {
   position: fixed;
-  top: 78px;
-  right: 18px;
+  top: 70px;
+  right: 16px;
   z-index: 1000;
-  width: min(300px, calc(100vw - 36px));
-  height: auto;
-  padding: 14px;
+
+  width: min(300px, calc(100vw - 32px));
+  padding: 13px;
+
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 14px;
+
   background: #24351f;
-  color: #ffffff;
+  color: white;
+
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
 }
 
 .menu-title {
-  margin: 0 0 10px;
-  padding: 4px 6px 10px;
+  margin: 0 0 9px;
+  padding: 4px 6px 9px;
+
   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-  font-size: 0.8rem;
+
+  color: #d4e6c9;
+
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #c8ddb9;
 }
 
 .menu-buttons {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
 }
 
 .menu-button {
   display: flex;
-  width: 100%;
   align-items: center;
   gap: 10px;
-  padding: 12px 14px;
+
+  width: 100%;
+  padding: 11px 13px;
+
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 9px;
+
   background: #39582f;
-  color: #ffffff;
+  color: white;
+
   font: inherit;
   font-weight: 700;
   text-align: left;
+
   cursor: pointer;
-  transform: scale(1);
-  transition:
-    transform 150ms ease,
-    background-color 150ms ease,
-    border-color 150ms ease,
-    box-shadow 150ms ease;
 }
 
 .menu-button:hover {
   background: #4c7040;
   border-color: rgba(255, 255, 255, 0.32);
-  transform: scale(1.035);
+
+  transform: scale(1.025);
   box-shadow: 0 7px 16px rgba(0, 0, 0, 0.24);
 }
 
 .menu-button:active {
   background: #304a28;
   transform: scale(0.985);
-  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.24);
 }
 
-.menu-button:focus-visible {
-  outline: 3px solid #d9efc9;
-  outline-offset: 2px;
-}
-
-@media (max-width: 800px) {
+@media (max-width: 560px) {
   .menu {
-    top: 176px;
-    right: 12px;
-    width: min(290px, calc(100vw - 24px));
+    top: 60px;
+    right: 8px;
+
+    width: min(285px, calc(100vw - 16px));
   }
 }
