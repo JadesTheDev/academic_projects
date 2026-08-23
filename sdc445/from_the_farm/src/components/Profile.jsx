@@ -12,6 +12,7 @@ into edit mode when the pencil button is selected.
 
 import React, { useState } from "react";
 import "./Profile.css";
+import johnFarmerPhoto from "../products/john-farmer.jpg";
 
 const DEFAULT_BIO =
   "Local produce enthusiast and supporter of small farms.";
@@ -60,7 +61,7 @@ const Profile = () => {
         {/* Profile Header */}
         <div className="profile-header">
           <div className="profile-avatar" aria-hidden="true">
-            👤
+            <img src={johnFarmerPhoto} alt="John Farmer" />
           </div>
 
           <div className="profile-heading">
