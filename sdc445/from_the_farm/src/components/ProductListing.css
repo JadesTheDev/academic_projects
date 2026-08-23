@@ -149,3 +149,44 @@ screens in the Visual Foundation design.
     grid-column: 1 / -1;
   }
 }
+
+.listing-page {
+  background: var(--surface-muted);
+  border-color: var(--border);
+  border-radius: 14px;
+}
+
+.listing-name,
+.listing-supplier-heading {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.listing-name {
+  font-size: 2.5rem;
+}
+
+.listing-supplier-heading {
+  font-size: 1.8rem;
+}
+
+.listing-supplier-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.listing-supplier-description {
+  color: var(--muted);
+}
+
+.listing-back-button {
+  border-color: var(--green);
+  border-radius: 9px;
+  background: var(--green);
+  color: white;
+  font-weight: 700;
+}
+
+.listing-back-button:hover {
+  background: var(--green-dark);
+}
