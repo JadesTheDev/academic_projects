@@ -8,6 +8,7 @@
   width: 100%;
   max-width: 520px;
   padding: 2rem;
+
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -20,17 +21,22 @@
 
 .login-heading h2 {
   margin: 0.25rem 0 0.75rem;
-  font-size: 2rem;
+
+  font-family: var(--font-heading);
+  font-size: 2.7rem;
+  font-weight: 600;
 }
 
 .login-heading p {
-  line-height: 1.5;
   color: var(--muted);
+  line-height: 1.5;
 }
 
 .login-eyebrow {
   margin: 0;
+
   color: #496b3d !important;
+
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -51,9 +57,12 @@
 .login-form input {
   width: 100%;
   padding: 0.8rem 0.9rem;
+
   border: 1px solid var(--border);
   border-radius: 6px;
+
   background: var(--surface);
+  color: var(--text);
 }
 
 .login-form input:focus {
@@ -64,10 +73,13 @@
 .login-submit {
   margin-top: 1rem;
   padding: 0.8rem 1rem;
+
   border: none;
   border-radius: 6px;
+
   background: #496b3d;
   color: #ffffff;
+
   font-weight: 700;
 }
 
@@ -78,14 +90,14 @@
 .login-message {
   margin: 1.25rem 0 0;
   padding: 0.85rem 1rem;
+
   border-left: 4px solid #496b3d;
   background: #edf4ea;
 }
 
 .login-note {
   margin: 1rem 0 0;
+
   color: var(--muted);
   font-size: 0.85rem;
 }
-
-.login-heading h2{font-family:var(--font-heading);font-size:2.7rem;font-weight:600}.login-form input{color:var(--text)}
