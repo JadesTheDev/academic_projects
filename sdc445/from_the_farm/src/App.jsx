@@ -36,15 +36,32 @@ import { catalogProducts } from "./data/marketplaceData";
 import heroImage from "./assets/products/farmers-market.jpg";
 import plantLogo from "./assets/brand/plant-logo.svg";
 
+
+// ==========================
+// Main Application Component
+// ==========================
+
 function App() {
+
+  // ==========================
+  // React State
+  // ==========================
+
   const [searchText, setSearchText] = useState("");
+
   const [statusMessage, setStatusMessage] = useState(
     "Welcome to From the Farm"
   );
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
   const [history, setHistory] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+
+  // ==========================
+  // Navigation Functions
+  // ==========================
 
   function navigateTo(page) {
     if (page !== currentPage) {
@@ -76,6 +93,16 @@ function App() {
     setStatusMessage("Welcome to From the Farm");
   }
 
+  function handleSelectProduct(product) {
+    setSelectedProduct(product);
+    navigateTo("productListing");
+  }
+
+
+  // ==========================
+  // Search Function
+  // ==========================
+
   function handleSearch() {
     const term = searchText.trim();
 
@@ -91,10 +118,10 @@ function App() {
     );
   }
 
-  function handleSelectProduct(product) {
-    setSelectedProduct(product);
-    navigateTo("productListing");
-  }
+
+  // ==========================
+  // Page Rendering
+  // ==========================
 
   function renderCurrentPage() {
     switch (currentPage) {
@@ -134,6 +161,7 @@ function App() {
       default:
         return (
           <>
+            {/* Search Section */}
             <Searchbar
               searchText={searchText}
               onSearchTextChange={setSearchText}
@@ -147,6 +175,8 @@ function App() {
               {statusMessage}
             </p>
 
+
+            {/* Hero Section */}
             <section className="hero-section">
               <img
                 className="hero-photo"
@@ -192,6 +222,8 @@ function App() {
               </div>
             </section>
 
+
+            {/* Featured Products Section */}
             <section className="content-section">
               <div className="section-heading-row">
                 <div>
@@ -217,9 +249,7 @@ function App() {
                     type="button"
                     className="home-product-card"
                     key={product.id}
-                    onClick={() =>
-                      handleSelectProduct(product)
-                    }
+                    onClick={() => handleSelectProduct(product)}
                   >
                     <img
                       src={product.image}
@@ -239,6 +269,8 @@ function App() {
               </div>
             </section>
 
+
+            {/* Community Section */}
             <section className="community-banner">
               <div>
                 <p className="page-eyebrow">
@@ -274,6 +306,11 @@ function App() {
         );
     }
   }
+
+
+  // ==========================
+  // Render Application
+  // ==========================
 
   return (
     <div className="app">
@@ -316,269 +353,6 @@ function App() {
             Local food. Local people. Grown close to home.
           </span>
         </p>
-      </footer>
-    </div>
-  );
-}
-
-export default App;================
-import { useState } from "react";
-import "./App.css";
-
-import Header from "./components/Header";
-import Menu from "./components/Menu";
-import Searchbar from "./components/Searchbar";
-import NewsCard from "./components/NewsCard";
-import ProductCard from "./components/ProductCard";
-import Profile from "./components/Profile";
-import Login from "./components/Login";
-import MapPage from "./components/MapPage";
-import SeasonalCalendar from "./components/SeasonalCalendar";
-import ProductCatalog from "./components/ProductCatalog";
-import ProductListing from "./components/ProductListing";
-import News from "./components/News";
-
-// ==========================
-// Main Application Component
-// ==========================
-
-function App() {
-  // ==========================
-  // React State
-  // ==========================
-
-  const [searchText, setSearchText] = useState("");
-
-  const [statusMessage, setStatusMessage] = useState(
-    "Welcome to From the Farm"
-  );
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const [currentPage, setCurrentPage] = useState("home");
-  const [previousPage, setPreviousPage] = useState("home");
-  const [selectedProduct, setSelectedProduct] = useState(null);
-
-  // ==========================
-  // Navigation Functions
-  // ==========================
-
-  function navigateTo(page) {
-    if (page !== currentPage) {
-      setPreviousPage(currentPage);
-      setCurrentPage(page);
-    }
-
-    setIsMenuOpen(false);
-  }
-
-  function handleBackClick() {
-    const pageToReturnTo = previousPage;
-    setPreviousPage(currentPage);
-    setCurrentPage(pageToReturnTo);
-    setIsMenuOpen(false);
-    setStatusMessage("Returned to the previous page.");
-  }
-
-  function handleHomeClick() {
-    navigateTo("home");
-    setStatusMessage("Welcome to From the Farm");
-  }
-
-  function handleLoginClick() {
-    navigateTo("login");
-  }
-
-  function handleSelectProduct(product) {
-    setSelectedProduct(product);
-    navigateTo("productListing");
-  }
-
-  function handleMenuClick() {
-    setIsMenuOpen((currentMenuState) => !currentMenuState);
-  }
-
-  function handleSearch() {
-    const cleanedSearchText = searchText.trim();
-
-    if (cleanedSearchText === "") {
-      setStatusMessage(
-        "Search selected: please enter a search term."
-      );
-
-      return;
-    }
-
-    setStatusMessage(
-      `Search results for: ${cleanedSearchText}`
-    );
-  }
-
-  // ==========================
-  // Placeholder Data
-  // ==========================
-
-  const newsItems = [
-    {
-      id: 1,
-      title: "Weekend Farmers' Market",
-      description:
-        "Local farmers will gather downtown this Saturday with produce, baked goods, and handmade products."
-    },
-    {
-      id: 2,
-      title: "What Is in Season?",
-      description:
-        "Learn which fruits and vegetables are currently available from farms in your community."
-    },
-    {
-      id: 3,
-      title: "Community Farm Event",
-      description:
-        "Families are invited to visit a nearby farm for demonstrations, activities, and local food."
-    }
-  ];
-
-  const products = [
-    {
-      id: 1,
-      name: "Fresh Local Tomatoes",
-      price: "$4.00 per basket"
-    },
-    {
-      id: 2,
-      name: "Local Wildflower Honey",
-      price: "$9.00 per jar"
-    }
-  ];
-
-  // ==========================
-  // Page Rendering
-  // ==========================
-
-  function renderCurrentPage() {
-    switch (currentPage) {
-      case "profile":
-        return <Profile />;
-      case "login":
-        return <Login />;
-      case "map":
-        return <MapPage />;
-      case "calendar":
-        return <SeasonalCalendar />;
-      case "listings":
-        return <ProductCatalog onSelectProduct={handleSelectProduct} />;
-      case "productListing":
-        return (
-          <ProductListing
-            product={selectedProduct}
-            onBack={() => navigateTo("listings")}
-          />
-        );
-      case "news":
-        return (
-          <News
-            newsItems={newsItems}
-          />
-        );
-      default:
-        return (
-          <>
-            {/* Search Section */}
-            <Searchbar
-              searchText={searchText}
-              onSearchTextChange={setSearchText}
-              onSearch={handleSearch}
-            />
-
-            <p
-              className="status-message"
-              aria-live="polite"
-            >
-              {statusMessage}
-            </p>
-
-            {/* Hero Section */}
-
-            <section className="hero-section">
-              <div className="hero-graphic">
-                <p>Farm Image Placeholder</p>
-              </div>
-
-              <div className="hero-text">
-                <h2>Discover Food Grown Near You</h2>
-
-                <p>
-                  Find nearby farms, farmers&apos; markets,
-                  seasonal products, and community events.
-                </p>
-              </div>
-            </section>
-
-            {/* Recent News Section */}
-
-            <section className="content-section">
-              <h2>Recent News</h2>
-              <div className="card-grid news-grid">
-                {newsItems.map((newsItem) => (
-                  <NewsCard
-                    key={newsItem.id}
-                    title={newsItem.title}
-                    description={newsItem.description}
-                  />
-                ))}
-              </div>
-            </section>
-
-            {/* Featured Products Section */}
-
-            <section className="content-section">
-              <h2>For You</h2>
-              <div className="card-grid product-grid">
-                {products.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    name={product.name}
-                    price={product.price}
-                  />
-                ))}
-              </div>
-            </section>
-          </>
-        );
-    }
-  }
-
-  // ==========================
-  // Render Application
-  // ==========================
-
-  return (
-    <div className="app">
-      <Header
-        onBackClick={handleBackClick}
-        onHomeClick={handleHomeClick}
-        onLoginClick={handleLoginClick}
-        onMenuClick={handleMenuClick}
-      />
-
-      {isMenuOpen && (
-        <Menu
-          onHomeClick={handleHomeClick}
-          onListingsClick={() => navigateTo("listings")}
-          onMapClick={() => navigateTo("map")}
-          onCalendarClick={() => navigateTo("calendar")}
-          onProfileClick={() => navigateTo("profile")}
-          onNewsClick={() => navigateTo("news")}
-        />
-      )}
-
-      <main className="main-content">
-        {renderCurrentPage()}
-      </main>
-
-      <footer className="footer">
-        <p>From the Farm — React Group Project</p>
       </footer>
     </div>
   );
