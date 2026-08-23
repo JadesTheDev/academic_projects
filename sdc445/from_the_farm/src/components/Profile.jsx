@@ -12,7 +12,7 @@ into edit mode when the pencil button is selected.
 
 import React, { useState } from "react";
 import "./Profile.css";
-import johnFarmerPhoto from "../products/john-farmer.jpg";
+import johnFarmerPhoto from "../assets/products/john-farmer.jpg";
 
 const DEFAULT_BIO =
   "Local produce enthusiast and supporter of small farms.";
@@ -55,7 +55,7 @@ const Profile = () => {
   }
 
   return (
-    <main className="profile-page">
+    <section className="profile-page">
       <section className="profile-card">
 
         {/* Profile Header */}
@@ -158,7 +158,7 @@ const Profile = () => {
 
         </div>
       </section>
-    </main>
+    </section>
   );
 };
 
