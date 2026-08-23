@@ -10,7 +10,7 @@ into edit mode when the pencil button is selected.
 =========================================================
 */
 
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Profile.css";
 import johnFarmerPhoto from "../assets/products/john-farmer.jpg";
 
@@ -55,18 +55,24 @@ const Profile = () => {
   }
 
   return (
-    <section className="profile-page">
+    <main className="profile-page">
       <section className="profile-card">
 
         {/* Profile Header */}
         <div className="profile-header">
-          <div className="profile-avatar" aria-hidden="true">
-            <img src={johnFarmerPhoto} alt="John Farmer" />
+          <div className="profile-avatar">
+            <img
+              src={johnFarmerPhoto}
+              alt="John Farmer"
+            />
           </div>
 
           <div className="profile-heading">
             <h1>John Farmer</h1>
-            <p className="profile-location">Charleston, SC</p>
+
+            <p className="profile-location">
+              Charleston, SC
+            </p>
 
             <div className="profile-meta">
               <span>Customer</span>
@@ -80,7 +86,10 @@ const Profile = () => {
 
           <div className="profile-section-heading">
             <div>
-              <p className="profile-eyebrow">ABOUT</p>
+              <p className="profile-eyebrow">
+                ABOUT
+              </p>
+
               <h2>Bio</h2>
             </div>
 
@@ -158,7 +167,7 @@ const Profile = () => {
 
         </div>
       </section>
-    </section>
+    </main>
   );
 };
 
