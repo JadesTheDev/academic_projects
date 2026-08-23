@@ -17,170 +17,95 @@ supplier carrying that product.
 =========================================================
 */
 
-// ==========================
-// Imports
-// ==========================
-
+import { useMemo, useState } from "react";
 import "./ProductCatalog.css";
 import ProductTile from "./ProductTile";
+import { catalogProducts } from "../data/marketplaceData";
 
-import tomatoesPhoto from "../assets/products/tomatoes.jpg";
-import basilPhoto from "../assets/products/basil.jpg";
-import honeyPhoto from "../assets/products/honey.jpg";
-import cornPhoto from "../assets/products/corn.jpg";
-import eggsPhoto from "../assets/products/eggs.jpg";
-import spinachPhoto from "../assets/products/spinach.jpg";
-import peachesPhoto from "../assets/products/peaches.jpg";
-import chickenBreastPhoto from "../assets/products/chicken-breast.jpg";
-import baconPhoto from "../assets/products/bacon.jpg";
-
-// ==========================
-// Placeholder Data
-// ==========================
-// TODO: Replace with real data from the Stock API once it
-// is available (see "FoF Stock API" in Visual Foundation).
-
-export const catalogProducts = [
-  {
-    id: 1,
-    name: "Heirloom Tomatoes",
-    price: "$3.99 / lb",
-    category: "Vegetables",
-    availability: "In Stock",
-    image: tomatoesPhoto,
-    supplier: {
-      name: "Green Valley Farms",
-      description:
-        "Family-owned vegetable farm growing heirloom produce since 1998.",
-      rating: 4.8
-    }
-  },
-  {
-    id: 2,
-    name: "Fresh Basil",
-    price: "$2.39 / bunch",
-    category: "Herbs",
-    availability: "In Stock",
-    image: basilPhoto,
-    supplier: {
-      name: "Riverbend Herb Co.",
-      description:
-        "Small-batch herb growers specializing in culinary basil and mint.",
-      rating: 4.6
-    }
-  },
-  {
-    id: 3,
-    name: "Local Wildflower Honey",
-    price: "$9.00 / jar",
-    category: "Pantry",
-    availability: "Low Stock",
-    image: honeyPhoto,
-    supplier: {
-      name: "Creekside Honey & Produce",
-      description: "Wildflower honey, tomatoes, peppers, and squash.",
-      rating: 4.9
-    }
-  },
-  {
-    id: 4,
-    name: "Sweet Corn",
-    price: "$0.75 / ear",
-    category: "Vegetables",
-    availability: "In Stock",
-    image: cornPhoto,
-    supplier: {
-      name: "Green Valley Farms",
-      description:
-        "Family-owned vegetable farm growing heirloom produce since 1998.",
-      rating: 4.8
-    }
-  },
-  {
-    id: 5,
-    name: "Farm Fresh Eggs",
-    price: "$5.49 / dozen",
-    category: "Dairy & Eggs",
-    availability: "In Stock",
-    image: eggsPhoto,
-    supplier: {
-      name: "Sunrise Poultry Farm",
-      description:
-        "Pasture-raised eggs and poultry, raised without antibiotics.",
-      rating: 4.7
-    }
-  },
-  {
-    id: 6,
-    name: "Baby Spinach",
-    price: "$3.25 / bag",
-    category: "Vegetables",
-    availability: "Out of Stock",
-    image: spinachPhoto,
-    supplier: {
-      name: "Green Valley Farms",
-      description:
-        "Family-owned vegetable farm growing heirloom produce since 1998.",
-      rating: 4.8
-    }
-  },
-  {
-    id: 7,
-    name: "Golden Peaches",
-    price: "$4.50 / lb",
-    category: "Fruits",
-    availability: "In Stock",
-    image: peachesPhoto,
-    supplier: {
-      name: "Hilltop Orchard",
-      description: "Third-generation orchard growing stone fruit and apples.",
-      rating: 4.5
-    }
-  },
-  {
-    id: 8,
-    name: "Chicken Breast",
-    price: "$6.99 / lb",
-    category: "Meat",
-    availability: "In Stock",
-    image: chickenBreastPhoto,
-    supplier: {
-      name: "Sunrise Poultry Farm",
-      description:
-        "Pasture-raised eggs and poultry, raised without antibiotics.",
-      rating: 4.7
-    }
-  },
-  {
-    id: 9,
-    name: "Bacon",
-    price: "$7.49 / lb",
-    category: "Meat",
-    availability: "Low Stock",
-    image: baconPhoto,
-    supplier: {
-      name: "Oakwood Smokehouse",
-      description: "Small-batch, hickory-smoked bacon and cured meats.",
-      rating: 4.8
-    }
-  }
-];
-
-// ==========================
-// ProductCatalog Component
-// ==========================
+export { catalogProducts } from "../data/marketplaceData";
 
 function ProductCatalog({ onSelectProduct }) {
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
+
+  const categories = [
+    "All",
+    ...new Set(
+      catalogProducts.map((product) => product.category)
+    ),
+  ];
+
+  const filtered = useMemo(
+    () =>
+      catalogProducts.filter((product) => {
+        const matchesCategory =
+          category === "All" || product.category === category;
+
+        const term = search.trim().toLowerCase();
+
+        const matchesSearch =
+          !term ||
+          `${product.name} ${product.supplier.name} ${product.category}`
+            .toLowerCase()
+            .includes(term);
+
+        return matchesCategory && matchesSearch;
+      }),
+    [search, category]
+  );
+
   return (
     <section className="catalog-page">
-      <h2 className="catalog-heading">Listings</h2>
+      <div className="catalog-title-row">
+        <div>
+          <p className="page-eyebrow">
+            Fresh nearby
+          </p>
 
-      <p className="catalog-subheading">
-        Browse local products and see the supplier behind each one.
-      </p>
+          <h2 className="catalog-heading">
+            Listings
+          </h2>
+
+          <p className="catalog-subheading">
+            Browse local food and meet the people behind it.
+          </p>
+        </div>
+
+        <span className="catalog-count">
+          {filtered.length} local items
+        </span>
+      </div>
+
+      <div className="catalog-tools">
+        <input
+          type="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search products or suppliers..."
+          aria-label="Search listings"
+        />
+
+        <div
+          className="catalog-filters"
+          aria-label="Filter listings by category"
+        >
+          {categories.map((item) => (
+            <button
+              type="button"
+              key={item}
+              className={
+                category === item ? "is-active" : ""
+              }
+              onClick={() => setCategory(item)}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div className="product-grid-tiles">
-        {catalogProducts.map((product) => (
+        {filtered.map((product) => (
           <ProductTile
             key={product.id}
             product={product}
@@ -188,12 +113,14 @@ function ProductCatalog({ onSelectProduct }) {
           />
         ))}
       </div>
+
+      {!filtered.length && (
+        <p className="empty-state">
+          No listings match that search yet.
+        </p>
+      )}
     </section>
   );
 }
-
-// ==========================
-// Export Component
-// ==========================
 
 export default ProductCatalog;
