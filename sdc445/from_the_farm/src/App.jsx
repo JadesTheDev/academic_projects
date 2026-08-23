@@ -16,18 +16,12 @@ button functionality, menu visibility, and page content.
 =========================================================
 */
 
-// ==========================
-// Imports
-// ==========================
-
 import { useState } from "react";
 import "./App.css";
 
 import Header from "./components/Header";
 import Menu from "./components/Menu";
 import Searchbar from "./components/Searchbar";
-import NewsCard from "./components/NewsCard";
-import ProductCard from "./components/ProductCard";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
 import MapPage from "./components/MapPage";
@@ -37,39 +31,24 @@ import ProductListing from "./components/ProductListing";
 import News from "./components/News";
 import Suppliers from "./components/Suppliers";
 
+import { catalogProducts } from "./data/marketplaceData";
+
 import heroImage from "./assets/products/farmers-market.jpg";
-
-
-// ==========================
-// Main Application Component
-// ==========================
+import plantLogo from "./assets/brand/plant-logo.svg";
 
 function App() {
-
-  // ==========================
-  // React State
-  // ==========================
-
   const [searchText, setSearchText] = useState("");
-
   const [statusMessage, setStatusMessage] = useState(
     "Welcome to From the Farm"
   );
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const [currentPage, setCurrentPage] = useState("home");
-  const [previousPage, setPreviousPage] = useState("home");
+  const [history, setHistory] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
-
-  // ==========================
-  // Navigation Functions
-  // ==========================
 
   function navigateTo(page) {
     if (page !== currentPage) {
-      setPreviousPage(currentPage);
+      setHistory((items) => [...items, currentPage].slice(-12));
       setCurrentPage(page);
     }
 
@@ -77,91 +56,45 @@ function App() {
   }
 
   function handleBackClick() {
-    const pageToReturnTo = previousPage;
+    if (history.length) {
+      setCurrentPage(history[history.length - 1]);
+      setHistory(history.slice(0, -1));
+    } else {
+      setCurrentPage("home");
+    }
 
-    setPreviousPage(currentPage);
-    setCurrentPage(pageToReturnTo);
     setIsMenuOpen(false);
-    setStatusMessage("Returned to the previous page.");
   }
 
   function handleHomeClick() {
-    navigateTo("home");
+    if (currentPage !== "home") {
+      setHistory((items) => [...items, currentPage].slice(-12));
+    }
+
+    setCurrentPage("home");
+    setIsMenuOpen(false);
     setStatusMessage("Welcome to From the Farm");
   }
 
-  function handleLoginClick() {
-    navigateTo("login");
+  function handleSearch() {
+    const term = searchText.trim();
+
+    if (!term) {
+      setStatusMessage(
+        "Enter a product, farm, or local food to search."
+      );
+      return;
+    }
+
+    setStatusMessage(
+      `Showing local discovery options for “${term}”.`
+    );
   }
 
   function handleSelectProduct(product) {
     setSelectedProduct(product);
     navigateTo("productListing");
   }
-
-  function handleMenuClick() {
-    setIsMenuOpen((currentMenuState) => !currentMenuState);
-  }
-
-  function handleSearch() {
-    const cleanedSearchText = searchText.trim();
-
-    if (cleanedSearchText === "") {
-      setStatusMessage(
-        "Search selected: please enter a search term."
-      );
-
-      return;
-    }
-
-    setStatusMessage(
-      `Search results for: ${cleanedSearchText}`
-    );
-  }
-
-
-  // ==========================
-  // Placeholder Data
-  // ==========================
-
-  const newsItems = [
-    {
-      id: 1,
-      title: "Weekend Farmers' Market",
-      description:
-        "Local farmers will gather downtown this Saturday with produce, baked goods, and handmade products.",
-    },
-    {
-      id: 2,
-      title: "What Is in Season?",
-      description:
-        "Learn which fruits and vegetables are currently available from farms in your community.",
-    },
-    {
-      id: 3,
-      title: "Community Farm Event",
-      description:
-        "Families are invited to visit a nearby farm for demonstrations, activities, and local food.",
-    },
-  ];
-
-  const products = [
-    {
-      id: 1,
-      name: "Fresh Local Tomatoes",
-      price: "$4.00 per basket",
-    },
-    {
-      id: 2,
-      name: "Local Wildflower Honey",
-      price: "$9.00 per jar",
-    },
-  ];
-
-
-  // ==========================
-  // Page Rendering
-  // ==========================
 
   function renderCurrentPage() {
     switch (currentPage) {
@@ -201,7 +134,6 @@ function App() {
       default:
         return (
           <>
-            {/* Search Section */}
             <Searchbar
               searchText={searchText}
               onSearchTextChange={setSearchText}
@@ -215,56 +147,127 @@ function App() {
               {statusMessage}
             </p>
 
-
-            {/* Hero Section */}
             <section className="hero-section">
-              <div className="hero-graphic">
-                <img
-                  className="hero-photo"
-                  src={heroImage}
-                  alt="Fresh produce at a local farmers market"
-                />
-              </div>
+              <img
+                className="hero-photo"
+                src={heroImage}
+                alt="Fresh produce at a local farmers market"
+              />
 
               <div className="hero-text">
-                <h2>Discover Food Grown Near You</h2>
+                <img
+                  className="hero-plant"
+                  src={plantLogo}
+                  alt=""
+                />
+
+                <p className="page-eyebrow">
+                  Grown close to home
+                </p>
+
+                <h2>Come eat local.</h2>
 
                 <p>
-                  Find nearby farms, farmers&apos; markets,
-                  seasonal products, and community events.
+                  Discover fresh food, the people who produce it,
+                  when it is in season, and what is happening in
+                  your local farm community.
+                </p>
+
+                <div className="hero-actions">
+                  <button
+                    type="button"
+                    onClick={() => navigateTo("listings")}
+                  >
+                    Browse Listings
+                  </button>
+
+                  <button
+                    type="button"
+                    className="secondary-button"
+                    onClick={() => navigateTo("suppliers")}
+                  >
+                    Meet Suppliers
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section className="content-section">
+              <div className="section-heading-row">
+                <div>
+                  <p className="page-eyebrow">
+                    Fresh right now
+                  </p>
+
+                  <h2>For You</h2>
+                </div>
+
+                <button
+                  type="button"
+                  className="text-button"
+                  onClick={() => navigateTo("listings")}
+                >
+                  See all listings →
+                </button>
+              </div>
+
+              <div className="home-product-grid">
+                {catalogProducts.slice(0, 4).map((product) => (
+                  <button
+                    type="button"
+                    className="home-product-card"
+                    key={product.id}
+                    onClick={() =>
+                      handleSelectProduct(product)
+                    }
+                  >
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                    />
+
+                    <span>
+                      <strong>{product.name}</strong>
+
+                      <small>
+                        {product.price} ·{" "}
+                        {product.supplier.name}
+                      </small>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            <section className="community-banner">
+              <div>
+                <p className="page-eyebrow">
+                  Your local food community
+                </p>
+
+                <h2>Know who grows your food.</h2>
+
+                <p>
+                  Browse nearby suppliers, check the seasonal
+                  calendar, and catch market or harvest updates
+                  in one place.
                 </p>
               </div>
-            </section>
 
+              <div>
+                <button
+                  type="button"
+                  onClick={() => navigateTo("map")}
+                >
+                  Explore the Map
+                </button>
 
-            {/* Recent News Section */}
-            <section className="content-section">
-              <h2>Recent News</h2>
-
-              <div className="card-grid news-grid">
-                {newsItems.map((newsItem) => (
-                  <NewsCard
-                    key={newsItem.id}
-                    title={newsItem.title}
-                    description={newsItem.description}
-                  />
-                ))}
-              </div>
-            </section>
-
-
-            {/* Featured Products Section */}
-            <section className="content-section">
-              <h2>For You</h2>
-
-              <div className="card-grid product-grid">
-                {products.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    name={product.name}
-                    price={product.price}
-                  />
-                ))}
+                <button
+                  type="button"
+                  onClick={() => navigateTo("news")}
+                >
+                  Community News
+                </button>
               </div>
             </section>
           </>
@@ -272,18 +275,15 @@ function App() {
     }
   }
 
-
-  // ==========================
-  // Render Application
-  // ==========================
-
   return (
     <div className="app">
       <Header
         onBackClick={handleBackClick}
         onHomeClick={handleHomeClick}
-        onLoginClick={handleLoginClick}
-        onMenuClick={handleMenuClick}
+        onLoginClick={() => navigateTo("login")}
+        onMenuClick={() =>
+          setIsMenuOpen((open) => !open)
+        }
         isMenuOpen={isMenuOpen}
       />
 
@@ -304,7 +304,18 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>From the Farm — React Group Project</p>
+        <img
+          src={plantLogo}
+          alt=""
+        />
+
+        <p>
+          <strong>From the Farm</strong>
+          <br />
+          <span>
+            Local food. Local people. Grown close to home.
+          </span>
+        </p>
       </footer>
     </div>
   );
