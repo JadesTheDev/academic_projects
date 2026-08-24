@@ -36,19 +36,39 @@ import { catalogProducts } from "./data/marketplaceData";
 import heroImage from "./assets/products/farmers-market.jpg";
 import plantLogo from "./assets/brand/plant-logo.svg";
 
+
+// ==========================
+// Main Application Component
+// ==========================
+
 function App() {
+
+  // ==========================
+  // React State
+  // ==========================
+
   const [searchText, setSearchText] = useState("");
+
   const [statusMessage, setStatusMessage] = useState(
     "Welcome to From the Farm"
   );
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
   const [history, setHistory] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+
+  // ==========================
+  // Navigation Functions
+  // ==========================
+
   function navigateTo(page) {
     if (page !== currentPage) {
-      setHistory((items) => [...items, currentPage].slice(-12));
+      setHistory((items) =>
+        [...items, currentPage].slice(-12)
+      );
+
       setCurrentPage(page);
     }
 
@@ -68,13 +88,25 @@ function App() {
 
   function handleHomeClick() {
     if (currentPage !== "home") {
-      setHistory((items) => [...items, currentPage].slice(-12));
+      setHistory((items) =>
+        [...items, currentPage].slice(-12)
+      );
     }
 
     setCurrentPage("home");
     setIsMenuOpen(false);
     setStatusMessage("Welcome to From the Farm");
   }
+
+  function handleSelectProduct(product) {
+    setSelectedProduct(product);
+    navigateTo("productListing");
+  }
+
+
+  // ==========================
+  // Search Function
+  // ==========================
 
   function handleSearch() {
     const term = searchText.trim();
@@ -83,6 +115,7 @@ function App() {
       setStatusMessage(
         "Enter a product, farm, or local food to search."
       );
+
       return;
     }
 
@@ -91,10 +124,10 @@ function App() {
     );
   }
 
-  function handleSelectProduct(product) {
-    setSelectedProduct(product);
-    navigateTo("productListing");
-  }
+
+  // ==========================
+  // Page Rendering
+  // ==========================
 
   function renderCurrentPage() {
     switch (currentPage) {
@@ -134,6 +167,7 @@ function App() {
       default:
         return (
           <>
+            {/* Search Section */}
             <Searchbar
               searchText={searchText}
               onSearchTextChange={setSearchText}
@@ -147,6 +181,8 @@ function App() {
               {statusMessage}
             </p>
 
+
+            {/* Hero Section */}
             <section className="hero-section">
               <img
                 className="hero-photo"
@@ -192,6 +228,8 @@ function App() {
               </div>
             </section>
 
+
+            {/* Featured Products Section */}
             <section className="content-section">
               <div className="section-heading-row">
                 <div>
@@ -212,33 +250,39 @@ function App() {
               </div>
 
               <div className="home-product-grid">
-                {catalogProducts.slice(0, 4).map((product) => (
-                  <button
-                    type="button"
-                    className="home-product-card"
-                    key={product.id}
-                    onClick={() =>
-                      handleSelectProduct(product)
-                    }
-                  >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                    />
+                {catalogProducts
+                  .slice(0, 4)
+                  .map((product) => (
+                    <button
+                      type="button"
+                      className="home-product-card"
+                      key={product.id}
+                      onClick={() =>
+                        handleSelectProduct(product)
+                      }
+                    >
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                      />
 
-                    <span>
-                      <strong>{product.name}</strong>
+                      <span>
+                        <strong>
+                          {product.name}
+                        </strong>
 
-                      <small>
-                        {product.price} ·{" "}
-                        {product.supplier.name}
-                      </small>
-                    </span>
-                  </button>
-                ))}
+                        <small>
+                          {product.price} ·{" "}
+                          {product.supplier.name}
+                        </small>
+                      </span>
+                    </button>
+                  ))}
               </div>
             </section>
 
+
+            {/* Community Section */}
             <section className="community-banner">
               <div>
                 <p className="page-eyebrow">
@@ -275,6 +319,11 @@ function App() {
     }
   }
 
+
+  // ==========================
+  // Render Application
+  // ==========================
+
   return (
     <div className="app">
       <Header
@@ -296,6 +345,7 @@ function App() {
           onCalendarClick={() => navigateTo("calendar")}
           onProfileClick={() => navigateTo("profile")}
           onNewsClick={() => navigateTo("news")}
+          onLoginClick={() => navigateTo("login")}
         />
       )}
 
@@ -312,6 +362,7 @@ function App() {
         <p>
           <strong>From the Farm</strong>
           <br />
+
           <span>
             Local food. Local people. Grown close to home.
           </span>
