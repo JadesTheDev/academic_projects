@@ -446,9 +446,6 @@ function App() {
 
           <span>
             Local food. Local people. Grown close to home.
-          <span>
-            SDC445 - Group Term Project
-          <span>
           </span>
         </p>
       </footer>
