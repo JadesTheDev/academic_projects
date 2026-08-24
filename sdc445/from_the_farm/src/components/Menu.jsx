@@ -21,6 +21,7 @@ function Menu({
   onCalendarClick,
   onProfileClick,
   onNewsClick,
+  onLoginClick,
 }) {
   const items = [
     ["🏠", "Home", onHomeClick],
@@ -30,6 +31,7 @@ function Menu({
     ["📅", "Seasonal Calendar", onCalendarClick],
     ["📰", "News", onNewsClick],
     ["👤", "Profile", onProfileClick],
+    ["🔐", "Log In", onLoginClick],
   ];
 
   return (
