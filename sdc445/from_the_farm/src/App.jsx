@@ -445,7 +445,10 @@ function App() {
           <br />
 
           <span>
-            Local food. Local people. Grown close to home. SEC445 - Group Project
+            Local food. Local people. Grown close to home.
+          <span>
+            SDC445 - Group Term Project
+          <span>
           </span>
         </p>
       </footer>
