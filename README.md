@@ -1,5 +1,9 @@
 # Academic Projects
 
+> Browse the coursework site: **https://jades-the-dev.github.io/academic_projects/**
+
+The GitHub Pages front end provides clickable course cards and curated links to individual assignments, demos, and source files.
+
 Overview:
 
 This repository contains structured coursework from multiple software development courses, including database design, networking systems, and collaborative web development projects.
