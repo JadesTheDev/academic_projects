@@ -1,0 +1,19 @@
+# 3.6 Performance Assessment: Library of Functions
+
+This project demonstrates the use of functions in Python to organize a program into reusable sections.
+
+## Concepts Demonstrated
+
+- Defining and calling functions
+- Passing parameters to functions
+- Returning values from functions
+- Storing returned values in variables
+- Conditional statements
+- User input
+- Program flow through `main()`
+
+## Program
+
+`SDC205_3.6_Powell.py`
+
+The program asks the user for two numbers, calculates their sum, determines whether the sum is greater than 5, and demonstrates passing and returning values between functions.
