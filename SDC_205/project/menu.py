@@ -1,21 +1,52 @@
 # SDC205L - Mr. Zakaria
-# JadPow5144
-# September 17, 2026
-# SDC205L 3.4 Project
+# SDC205 Project
+# Week 4 - Programmatically Generating CSV Files
 
 from datetime import datetime
+import os
 
 
-# Converts the entered value based on the selected data type.
+# Converts entered data based on the selected data type.
 def convertData(value, data_type):
     if data_type == "1":
+        # Fahrenheit to Celsius
         return (value - 32) * 5 / 9
 
     elif data_type == "2":
+        # Pounds to kilograms
         return value / 2.205
 
     elif data_type == "3":
+        # Inches to centimeters
         return value * 2.54
+
+
+# Inserts data into the CSV file.
+def insertData(file_path, data):
+    try:
+        # Opens the file with append permission.
+        with open(file_path, "a") as file:
+            file.write(data + "\n")
+
+        return True
+
+    except OSError as error:
+        print("Error writing to file:", error)
+        return False
+
+
+# Displays the contents of the CSV file.
+def viewData(file_path):
+    try:
+        # Opens the file with read-only permission.
+        with open(file_path, "r") as file:
+            print("\nThe file", os.path.abspath(file_path))
+
+            for line in file:
+                print(line.strip())
+
+    except OSError as error:
+        print("Error reading file:", error)
 
 
 # Gets multiple dated entries from the user.
@@ -50,58 +81,46 @@ def getInput():
                 value = float(
                     input("Enter temperature in Fahrenheit: ")
                 )
-                converted_value = convertData(value, data_type)
-
-                print(
-                    "The following data was entered at",
-                    datetime.now(),
-                    ":",
-                    date,
-                    value,
-                    "Fahrenheit =",
-                    round(converted_value, 2),
-                    "Celsius"
-                )
 
             elif data_type == "2":
                 value = float(
                     input("Enter weight in pounds: ")
                 )
-                converted_value = convertData(value, data_type)
 
-                print(
-                    "The following data was entered at",
-                    datetime.now(),
-                    ":",
-                    date,
-                    value,
-                    "pounds =",
-                    round(converted_value, 2),
-                    "kilograms"
-                )
-
-            elif data_type == "3":
+            else:
                 value = float(
                     input("Enter rain amount in inches: ")
                 )
-                converted_value = convertData(value, data_type)
 
-                print(
-                    "The following data was entered at",
-                    datetime.now(),
-                    ":",
-                    date,
-                    value,
-                    "inches =",
-                    round(converted_value, 2),
-                    "centimeters"
-                )
+            # Calls convertData with the entered value and data type.
+            converted_value = convertData(value, data_type)
+
+            # Creates the comma-separated data for the CSV file.
+            data = (
+                date
+                + ","
+                + str(value)
+                + ","
+                + str(converted_value)
+            )
+
+            try:
+                if insertData("ZooData.csv", data):
+                    print(
+                        "The following data was saved at",
+                        datetime.now(),
+                        ":",
+                        data
+                    )
+
+            except OSError as error:
+                print("Error saving data:", error)
 
     except ValueError:
         print("Error: Please enter a valid number.")
 
 
-# Displays the spreadsheet automation menu and returns the user's selection.
+# Displays the spreadsheet automation menu.
 def displayMenu():
     menu_options = [
         "Input Data",
@@ -116,18 +135,16 @@ def displayMenu():
     for number, option in enumerate(menu_options, start=1):
         print(number, option)
 
-    selection = input("Choose an option: ")
-
-    return selection
+    return input("Choose an option: ")
 
 
-# Main program loop.
+# Main program.
 def main():
     while True:
 
         selection = displayMenu()
 
-        if selection in ("1", "2", "3", "4"):
+        if selection == "1":
             print(
                 "You selected",
                 selection,
@@ -135,18 +152,38 @@ def main():
                 datetime.now()
             )
 
-            if selection == "1":
-                getInput()
+            getInput()
 
-            elif selection == "2":
-                print("View Current Data selected.")
+        elif selection == "2":
+            print(
+                "You selected",
+                selection,
+                "at",
+                datetime.now()
+            )
 
-            elif selection == "3":
-                print("Generate Report selected.")
+            viewData("ZooData.csv")
 
-            elif selection == "4":
-                print("Program ended.")
-                break
+        elif selection == "3":
+            print(
+                "You selected",
+                selection,
+                "at",
+                datetime.now()
+            )
+
+            print("Generate Report selected.")
+
+        elif selection == "4":
+            print(
+                "You selected",
+                selection,
+                "at",
+                datetime.now()
+            )
+
+            print("Program ended.")
+            break
 
         else:
             print("Error: Invalid choice selected.")
