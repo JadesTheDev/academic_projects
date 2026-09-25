@@ -1,0 +1,8 @@
+SDC205 4.7 Performance Assessment
+Advanced Pandas and Charting
+
+Run advancedPandasCharting.py in IDLE.
+
+The program creates a 10-student classroom roster, uses a MultiIndex for
+student and subject, creates a DataFrame, groups grades by subject mean,
+prints the results, and displays a vertical bar graph.
