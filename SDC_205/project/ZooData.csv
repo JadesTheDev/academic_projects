@@ -1,3 +1,4 @@
-09/24/2026,68.0,20.0
-09/24/2026,220.5,100.0
-09/24/2026,2.0,5.08
+Date,Location,Data Type,Description,Original Value,Converted Value
+08/01/2026,"Death Valley, CA",Temperature,The hottest day in 2026,124,51.111111111111114
+07/24/2026,"Phoenix, AZ",Temperature,The second hottest day in 2026,117,47.22222222222222
+08/01/2026,"Las Vegas, NV",Temperature,The third hottest day in 2026,115,46.111111111111114
