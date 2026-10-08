@@ -698,3 +698,25 @@ footer {
   }
 
 }
+
+/* -------------------------------
+   Header navigation buttons
+   ------------------------------- */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.header-actions .button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    flex-wrap: wrap;
+  }
+}
