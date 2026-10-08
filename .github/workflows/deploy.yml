@@ -1,67 +1,35 @@
-name: Deploy From the Farm
+name: Build From the Farm
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - "sdc445/from_the_farm/**"
+      - "SDC_445/FromTheFarm/src/**"
+      - "SDC_445/FromTheFarm/public/**"
+      - "SDC_445/FromTheFarm/package*.json"
       - ".github/workflows/deploy.yml"
-
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     defaults:
       run:
-        working-directory: sdc445/from_the_farm
-
+        working-directory: SDC_445/FromTheFarm
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: npm
-          cache-dependency-path: sdc445/from_the_farm/package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build project
-        run: npm run build
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload build
-        uses: actions/upload-pages-artifact@v4
+          cache-dependency-path: SDC_445/FromTheFarm/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - name: Upload static app build
+        uses: actions/upload-artifact@v4
         with:
-          path: sdc445/from_the_farm/build
-
-  deploy:
-    needs: build
-
-    runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+          name: from-the-farm-build
+          path: SDC_445/FromTheFarm/build
